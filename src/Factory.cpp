@@ -10,6 +10,12 @@
 #include "components/OutputComponent.hpp"
 #include "components/TrueComponent.hpp"
 #include "components/XorComponent.hpp"
+#include "components/gates/4001.hpp"
+#include "components/gates/4011.hpp"
+#include "components/gates/4030.hpp"
+#include "components/gates/4069.hpp"
+#include "components/gates/4071.hpp"
+#include "components/gates/4081.hpp"
 #include <array>
 #include <functional>
 #include <memory>
@@ -25,6 +31,12 @@ nts::Factory::Factory() : _components({{
     {"output", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::OutputComponent>();}},
     {"true", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::TrueComponent>();}},
     {"xor", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::XorComponent>();}},
+    {"4001", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4001>();}},
+    {"4011", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4011>();}},
+    {"4030", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4030>();}},
+    {"4069", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4069>();}},
+    {"4071", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4071>();}},
+    {"4081", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4081>();}},
 }})
 {
 }
