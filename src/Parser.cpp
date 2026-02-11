@@ -147,6 +147,6 @@ void nts::Parser::parseSection(
             func(this, line);
         }
     } else {
-        throw nts::Exception(std::string("Couldn't find ", statementConst));
+        throw nts::Exception("Couldn't find " + std::string(statementConst));
     }
 }
