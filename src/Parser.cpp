@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-nts::Parser::Parser(const std::string fileName): _factory(), _fileName(fileName), _fileStream()
+nts::Parser::Parser(const std::string fileName): _factory(), _fileName(fileName), _fileStream(), _line()
 {
 }
 
@@ -32,6 +32,14 @@ std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> nts::Parse
 
 void nts::Parser::removeComments(std::string &str)
 {
+    str = str.substr(0, str.find(COMMENT_SYMBOL));
+}
+
+std::string &nts::Parser::getline(std::stringstream &ss)
+{
+    std::getline(ss, _line);
+    removeComments(_line);
+    return _line;
 }
 
 void nts::Parser::parse()
@@ -42,12 +50,18 @@ void nts::Parser::parse()
 
     std::stringstream ss;
     ss << _fileStream.rdbuf();
+    bool isStatement = false;
+    std::string line;
 
-    std::string fullContent = ss.str();
-
-    removeComments(fullContent);
-    parseSection(fullContent, CHIPSETS_STATEMENT, &Parser::parseChipsetLine);
-    parseSection(fullContent, LINKS_STATEMENT, &Parser::parseLinkLine);
+    while (!ss.eof()) {
+        if (!isStatement)
+            line = getline(ss);
+        if (line.starts_with(STATEMENT_SYMBOL)) {
+            isStatement = parseSection(ss, line);
+        } else if (!line.empty()) {
+            throw nts::Exception("Line is not a statement");
+        }
+    }
 }
 
 void nts::Parser::parseChipsetLine(const std::string &line)
@@ -127,26 +141,23 @@ void nts::Parser::parseLinkLine(const std::string &line)
     firstPart.second->setLink(firstPart.first, *secondPart.second, secondPart.first);
 }
 
-void nts::Parser::parseSection(
-    const std::string &str,
-    const char *statementConst,
-    std::function<void(nts::Parser *, const std::string &)> func
-) {
-    std::string::size_type statement = str.find(statementConst);
+// only returns true if the previous line is a statement
+bool nts::Parser::parseSection(std::stringstream &ss, const std::string statement) {
+    std::string line;
 
-    if (statement != str.npos) {
-        std::stringstream ss(str.substr(statement));
-        std::string line;
+    while (!ss.eof()) {
+        line = getline(ss);
+        if (line.empty())
+            break;
+        if (line.starts_with(STATEMENT_SYMBOL))
+            return true;
 
-        // void out the CHIPSETS_STATEMENT cuz useless
-        std::getline(ss, line);
-
-        while (std::getline(ss, line)) {
-            if (line.empty() || line.starts_with("."))
-                break;
-            func(this, line);
-        }
-    } else {
-        throw nts::Exception("Couldn't find " + std::string(statementConst));
+        if (statement == CHIPSETS_STATEMENT)
+            parseChipsetLine(line);
+        else if (statement == LINKS_STATEMENT)
+            parseLinkLine(line);
+        else
+            throw nts::Exception("Statement " + statement + " unknown.");
     }
+    return false;
 }
