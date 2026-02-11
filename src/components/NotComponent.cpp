@@ -15,6 +15,6 @@ nts::Tristate nts::NotComponent::compute(std::size_t pin)
         case 2:
             return static_cast<nts::Tristate>(!static_cast<bool>(getLink(1)));
         default:
-            return nts::Undefined;
+            return getLink(pin);
     }
 }

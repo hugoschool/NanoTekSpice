@@ -18,6 +18,6 @@ nts::Tristate nts::AndComponent::compute(std::size_t pin)
             return static_cast<nts::Tristate>(a && b);
         }
         default:
-            return nts::Undefined;
+            return getLink(pin);
     }
 }
