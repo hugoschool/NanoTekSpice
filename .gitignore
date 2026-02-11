@@ -3,3 +3,7 @@
 *.o
 *.out
 nanotekspice
+
+# Cache
+.cache
+compile_commands.json
