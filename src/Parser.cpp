@@ -142,6 +142,7 @@ void nts::Parser::parseLinkLine(const std::string &line)
     std::pair<std::size_t, std::shared_ptr<nts::IComponent>> secondPart = parseLinkPart(second);
 
     firstPart.second->setLink(firstPart.first, *secondPart.second, secondPart.first);
+    secondPart.second->setLink(secondPart.first, *firstPart.second, firstPart.first);
 }
 
 void nts::Parser::parseSection(std::stringstream &ss, const std::string statement) {
