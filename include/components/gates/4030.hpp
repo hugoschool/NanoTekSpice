@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../AComponent.hpp"
+#include "components/AComponent.hpp"
 #include "components/XorComponent.hpp"
 #include <array>
 #include <memory>

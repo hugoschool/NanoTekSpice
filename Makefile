@@ -15,7 +15,15 @@ SRC	:=	src/main.cpp \
 		src/components/OrComponent.cpp \
 		src/components/OutputComponent.cpp \
 		src/components/TrueComponent.cpp \
-		src/components/XorComponent.cpp
+		src/components/XorComponent.cpp	\
+		src/components/NandComponent.cpp	\
+		src/components/NorComponent.cpp	\
+		src/components/gates/4001.cpp	\
+		src/components/gates/4011.cpp	\
+		src/components/gates/4030.cpp	\
+		src/components/gates/4069.cpp	\
+		src/components/gates/4071.cpp	\
+		src/components/gates/4081.cpp
 OBJ	:=	$(SRC:.cpp=.o)
 
 BINARY	:=	nanotekspice
