@@ -5,7 +5,7 @@
 ** main.cpp
 */
 
-#include "Parser.hpp"
+#include "NanoTekSpice.hpp"
 #include "Exception.hpp"
 #include <iostream>
 
@@ -16,10 +16,10 @@ int main(int argc, char **argv)
         return 84;
     }
 
-    nts::Parser parser(argv[1]);
-
     try {
-        parser.parse();
+        nts::NanoTekSpice nts;
+        nts.addCircuit(argv[1]);
+        nts.loop();
     } catch (const nts::Exception &e) {
         std::cerr << e.what() << std::endl;
         return 84;

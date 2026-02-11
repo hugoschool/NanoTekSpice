@@ -7,8 +7,7 @@
 #include <sstream>
 #include <string>
 
-nts::Parser::Parser(const std::string fileName): _factory(), _fileName(fileName), _fileStream(),
-    _line(), _lineIsStatement(false)
+nts::Parser::Parser(): _factory(), _fileName(), _fileStream(), _line(), _lineIsStatement(false)
 {
 }
 
@@ -18,8 +17,16 @@ nts::Parser::~Parser()
         _fileStream.close();
 }
 
+void nts::Parser::setFileName(const std::string fileName)
+{
+    _fileName = fileName;
+}
+
 bool nts::Parser::open()
 {
+    if (_fileName.empty())
+        return false;
+
     if (!_fileStream.is_open()) {
         _fileStream.open(_fileName);
         return _fileStream.is_open();
@@ -28,7 +35,7 @@ bool nts::Parser::open()
     }
 }
 
-std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> nts::Parser::getChipsets()
+std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> nts::Parser::getChipsets() const
 {
     return _chipsets;
 }

@@ -13,13 +13,11 @@ namespace nts {
 
             nts::Tristate compute(std::size_t pin) override;
             void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) override;
-            void simulate(std::size_t tick = 1) override final;
-            void display();
+            void simulate(std::size_t tick) override final;
+            void display(std::size_t &tick);
             void add(std::string, std::shared_ptr<IComponent>);
             std::shared_ptr<IComponent> find(const std::string &);
         private:
             std::unordered_map<std::string, std::shared_ptr<IComponent>> _components;
-            // TODO: global tick
-            std::size_t _tick;
     };
 }

@@ -17,16 +17,18 @@
 namespace nts {
     class Parser {
         public:
-            Parser(const std::string);
+            Parser();
             ~Parser();
 
+            void setFileName(const std::string);
+
             void parse();
-            std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> getChipsets();
+            std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> getChipsets() const;
 
         private:
             nts::Factory _factory;
 
-            const std::string _fileName;
+            std::string _fileName;
             std::ifstream _fileStream;
 
             std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> _chipsets;

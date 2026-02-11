@@ -10,6 +10,7 @@ SRC	:=	src/main.cpp \
 		src/Circuit.cpp \
 		src/Exception.cpp \
 		src/Factory.cpp \
+		src/NanoTekSpice.cpp \
 		src/Parser.cpp \
 		src/Tristate.cpp \
 		src/components/AComponent.cpp \

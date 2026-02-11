@@ -8,7 +8,7 @@
 #include <memory>
 #include <unordered_map>
 
-nts::Circuit::Circuit() : IComponent(), _components(), _tick(0)
+nts::Circuit::Circuit() : IComponent(), _components()
 {
 }
 
@@ -30,16 +30,16 @@ std::shared_ptr<nts::IComponent> nts::Circuit::find(const std::string &name)
 
 void nts::Circuit::simulate(std::size_t tick)
 {
-    _tick += tick;
     for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
         pair.second->simulate(tick);
     }
 }
 
-void nts::Circuit::display()
+void nts::Circuit::display(std::size_t &tick)
 {
-    std::cout << "tick: " << _tick << std::endl;
+    std::cout << "tick: " << tick << std::endl;
 
+    // TODO: sort in alphabetical order
     // TODO: unsure about all of this
     std::cout << "input(s):" << std::endl;
     for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
