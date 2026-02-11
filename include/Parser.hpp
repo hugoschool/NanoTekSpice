@@ -19,6 +19,7 @@ namespace nts {
             ~Parser();
 
             void parse();
+            std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> getChipsets();
 
         private:
             nts::Factory _factory;

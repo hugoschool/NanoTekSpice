@@ -25,6 +25,11 @@ bool nts::Parser::open()
     }
 }
 
+std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> nts::Parser::getChipsets()
+{
+    return _chipsets;
+}
+
 void nts::Parser::removeComments(std::string &str)
 {
 }
