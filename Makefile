@@ -4,6 +4,7 @@ CPPFLAGS	:=	-I include
 
 SRC	:=	src/main.cpp \
 		src/Circuit.cpp \
+		src/Factory.cpp \
 		src/Tristate.cpp \
 		src/components/AComponent.cpp \
 		src/components/AndComponent.cpp \
