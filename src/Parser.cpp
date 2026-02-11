@@ -65,6 +65,10 @@ void nts::Parser::parse()
             throw nts::Exception("Line is not a statement");
         }
     }
+
+    if (_chipsets.empty()) {
+        throw nts::Exception("Chipsets cannot be empty");
+    }
 }
 
 void nts::Parser::parseChipsetLine(const std::string &line)
@@ -152,7 +156,7 @@ void nts::Parser::parseSection(std::stringstream &ss, const std::string statemen
     for (; !ss.eof(); i++) {
         line = getline(ss);
         if (line.empty())
-            break;
+            continue;
         if (line.starts_with(STATEMENT_SYMBOL)) {
             _lineIsStatement = true;
             break;
