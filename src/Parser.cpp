@@ -2,6 +2,8 @@
 #include "Exception.hpp"
 #include "components/IComponent.hpp"
 #include <iostream>
+#include <memory>
+#include <optional>
 #include <sstream>
 #include <string>
 
@@ -71,6 +73,16 @@ void nts::Parser::parse()
     }
 }
 
+std::optional<std::shared_ptr<nts::IComponent>> nts::Parser::findComponentByName(const std::string &name)
+{
+    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _chipsets) {
+        if (pair.first == name) {
+            return pair.second;
+        }
+    }
+    return std::nullopt;
+}
+
 void nts::Parser::parseChipsetLine(const std::string &line)
 {
     std::stringstream ss(line);
@@ -89,6 +101,10 @@ void nts::Parser::parseChipsetLine(const std::string &line)
     ss >> empty;
     if (!ss.fail()) {
         throw nts::Exception("Too many arguments when parsing chipset");
+    }
+
+    if (findComponentByName(name).has_value()) {
+        throw nts::Exception("Component " + name + " already exists");
     }
 
     _chipsets.push_back({name, _factory.createComponent(type)});
@@ -113,13 +129,13 @@ std::pair<std::size_t, std::shared_ptr<nts::IComponent>> nts::Parser::parseLinkP
         throw nts::Exception("Error when parsing link");
     }
 
-    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _chipsets) {
-        if (pair.first == name) {
-            return {pin, pair.second};
-        }
-    }
+    std::optional<std::shared_ptr<nts::IComponent>> ptr = findComponentByName(name);
 
-    throw nts::Exception("Couldn't find chipset " + name + " from link");
+    if (ptr.has_value()) {
+        return {pin, *ptr};
+    } else {
+        throw nts::Exception("Couldn't find chipset " + name + " from link");
+    }
 }
 
 void nts::Parser::parseLinkLine(const std::string &line)

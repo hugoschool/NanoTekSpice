@@ -4,6 +4,7 @@
 #include "components/IComponent.hpp"
 #include <fstream>
 #include <memory>
+#include <optional>
 #include <string>
 #include <utility>
 #include <vector>
@@ -32,6 +33,8 @@ namespace nts {
 
             std::string _line;
             bool _lineIsStatement;
+
+            std::optional<std::shared_ptr<nts::IComponent>> findComponentByName(const std::string &name);
 
             bool open();
             void parseSection(std::stringstream &, const std::string);
