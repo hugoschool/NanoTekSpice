@@ -12,6 +12,6 @@ namespace nts {
             const char *what() const noexcept override;
 
         private:
-            const std::string &_str;
+            const std::string _str;
     };
 }
