@@ -16,28 +16,22 @@ nts::Circuit::~Circuit()
 {
 }
 
-void nts::Circuit::add(std::string name, std::unique_ptr<IComponent> component)
+void nts::Circuit::add(std::string name, std::shared_ptr<IComponent> component)
 {
     _components.insert_or_assign(name, std::move(component));
 }
 
-// TODO: unsure about this but this was the best way to just return a pointer to the
-// internal unique pointer.
-nts::IComponent *nts::Circuit::find(const std::string &name)
+std::shared_ptr<nts::IComponent> nts::Circuit::find(const std::string &name)
 {
-    std::unordered_map<std::string, std::unique_ptr<nts::IComponent>>::iterator value = _components.find(name);
+    std::unordered_map<std::string, std::shared_ptr<nts::IComponent>>::iterator value = _components.find(name);
 
-    if (value == _components.end()) {
-        return nullptr;
-    } else {
-        return value->second.get();
-    }
+    return value->second;
 }
 
 void nts::Circuit::simulate(std::size_t tick)
 {
     _tick += tick;
-    for (std::pair<const std::string, std::unique_ptr<nts::IComponent>> &pair : _components) {
+    for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
         pair.second->simulate(tick);
     }
 }
@@ -48,7 +42,7 @@ void nts::Circuit::display()
 
     // TODO: unsure about all of this
     std::cout << "input(s):" << std::endl;
-    for (std::pair<const std::string, std::unique_ptr<nts::IComponent>> &pair : _components) {
+    for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
         if (dynamic_cast<InputComponent *>(pair.second.get())
             || dynamic_cast<ClockComponent *>(pair.second.get())) {
             std::cout << "  " << pair.first << ": " << pair.second->compute(1) << std::endl;
@@ -56,7 +50,7 @@ void nts::Circuit::display()
     }
 
     std::cout << "output(s):" << std::endl;
-    for (std::pair<const std::string, std::unique_ptr<nts::IComponent>> &pair : _components) {
+    for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
         if (dynamic_cast<OutputComponent *>(pair.second.get())) {
             std::cout << "  " << pair.first << ": " << pair.second->compute(2) << std::endl;
         }

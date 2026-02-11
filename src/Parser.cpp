@@ -68,7 +68,7 @@ void nts::Parser::parseChipsetLine(const std::string &line)
     _chipsets.push_back({name, _factory.createComponent(type)});
 }
 
-std::pair<std::size_t, nts::IComponent *> nts::Parser::parseLinkPart(std::string &str)
+std::pair<std::size_t, std::shared_ptr<nts::IComponent>> nts::Parser::parseLinkPart(std::string &str)
 {
     // replacing ":" with " " to extract with ss
     if (str.find(":") == str.npos) {
@@ -87,9 +87,9 @@ std::pair<std::size_t, nts::IComponent *> nts::Parser::parseLinkPart(std::string
         throw nts::Exception("Error when parsing link");
     }
 
-    for (const std::pair<std::string, std::unique_ptr<nts::IComponent>> &pair : _chipsets) {
+    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _chipsets) {
         if (pair.first == name) {
-            return {pin, pair.second.get()};
+            return {pin, pair.second};
         }
     }
 
@@ -116,8 +116,8 @@ void nts::Parser::parseLinkLine(const std::string &line)
         throw nts::Exception("Too many arguments when parsing links");
     }
 
-    std::pair<std::size_t, nts::IComponent *> firstPart = parseLinkPart(first);
-    std::pair<std::size_t, nts::IComponent *> secondPart = parseLinkPart(second);
+    std::pair<std::size_t, std::shared_ptr<nts::IComponent>> firstPart = parseLinkPart(first);
+    std::pair<std::size_t, std::shared_ptr<nts::IComponent>> secondPart = parseLinkPart(second);
 
     firstPart.second->setLink(firstPart.first, *secondPart.second, secondPart.first);
 }

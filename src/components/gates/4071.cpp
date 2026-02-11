@@ -8,7 +8,7 @@ nts::Component4071::Component4071()
     std::size_t pin = 1;
 
     for (std::size_t i = 0; i < _component_array.size(); i++) {
-        _component_array[i] = std::make_unique<nts::OrComponent>();
+        _component_array[i] = std::make_shared<nts::OrComponent>();
         if (pin == 7)
             pin++;
         if (invert) {

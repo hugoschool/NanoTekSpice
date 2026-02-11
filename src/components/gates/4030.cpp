@@ -8,7 +8,7 @@ nts::Component4030::Component4030()
     std::size_t pin = 1;
 
     for (std::size_t i = 0; i < _component_array.size(); i++) {
-        _component_array[i] = std::make_unique<nts::XorComponent>();
+        _component_array[i] = std::make_shared<nts::XorComponent>();
         if (pin == 7)
             pin++;
         if (invert) {

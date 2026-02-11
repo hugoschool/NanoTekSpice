@@ -8,7 +8,7 @@ nts::Component4001::Component4001()
     std::size_t pin = 1;
 
     for (std::size_t i = 0; i < _component_array.size(); i++) {
-        _component_array[i] = std::make_unique<nts::NorComponent>();
+        _component_array[i] = std::make_shared<nts::NorComponent>();
         if (pin == 7)
             pin++;
         if (invert) {

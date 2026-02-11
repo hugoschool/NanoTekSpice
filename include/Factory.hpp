@@ -11,8 +11,8 @@ namespace nts {
             Factory();
             ~Factory();
 
-            std::unique_ptr<nts::IComponent> createComponent(const std::string &type);
+            std::shared_ptr<nts::IComponent> createComponent(const std::string &type);
         private:
-            const std::array<std::pair<std::string, std::function<std::unique_ptr<nts::IComponent>()>>, 9> _components;
+            const std::array<std::pair<std::string, std::function<std::shared_ptr<nts::IComponent>()>>, 9> _components;
     };
 }

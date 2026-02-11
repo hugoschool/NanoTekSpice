@@ -16,15 +16,15 @@
 #include <utility>
 
 nts::Factory::Factory() : _components({{
-    {"and", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::AndComponent>();}},
-    {"clock", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::ClockComponent>();}},
-    {"false", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::FalseComponent>();}},
-    {"input", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::InputComponent>();}},
-    {"not", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::NotComponent>();}},
-    {"or", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::OrComponent>();}},
-    {"output", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::OutputComponent>();}},
-    {"true", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::TrueComponent>();}},
-    {"xor", []() -> std::unique_ptr<nts::IComponent>{return std::make_unique<nts::XorComponent>();}},
+    {"and", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::AndComponent>();}},
+    {"clock", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::ClockComponent>();}},
+    {"false", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::FalseComponent>();}},
+    {"input", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::InputComponent>();}},
+    {"not", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::NotComponent>();}},
+    {"or", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::OrComponent>();}},
+    {"output", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::OutputComponent>();}},
+    {"true", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::TrueComponent>();}},
+    {"xor", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::XorComponent>();}},
 }})
 {
 }
@@ -33,9 +33,9 @@ nts::Factory::~Factory()
 {
 }
 
-std::unique_ptr<nts::IComponent> nts::Factory::createComponent(const std::string &type)
+std::shared_ptr<nts::IComponent> nts::Factory::createComponent(const std::string &type)
 {
-    for (const std::pair<std::string, std::function<std::unique_ptr<nts::IComponent>()>> &pair : _components) {
+    for (const std::pair<std::string, std::function<std::shared_ptr<nts::IComponent>()>> &pair : _components) {
         if (type == pair.first)
             return pair.second();
     };
