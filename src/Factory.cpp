@@ -1,4 +1,5 @@
 #include "Factory.hpp"
+#include "Exception.hpp"
 #include "components/AndComponent.hpp"
 #include "components/ClockComponent.hpp"
 #include "components/FalseComponent.hpp"
@@ -34,10 +35,10 @@ nts::Factory::~Factory()
 
 std::unique_ptr<nts::IComponent> nts::Factory::createComponent(const std::string &type)
 {
-    // TODO: throw exception
-
     for (const std::pair<std::string, std::function<std::unique_ptr<nts::IComponent>()>> &pair : _components) {
         if (type == pair.first)
             return pair.second();
     };
+
+    throw nts::Exception("Type unknown");
 }
