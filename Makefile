@@ -2,10 +2,15 @@ CXX	:=	clang++
 CXXFLAGS	:=	-Wall -Wextra -std=c++20
 CPPFLAGS	:=	-I include
 
+ifeq ($(ENV), dev)
+	CXXFLAGS	+=	-g3
+endif
+
 SRC	:=	src/main.cpp \
 		src/Circuit.cpp \
 		src/Exception.cpp \
 		src/Factory.cpp \
+		src/Parser.cpp \
 		src/Tristate.cpp \
 		src/components/AComponent.cpp \
 		src/components/AndComponent.cpp \

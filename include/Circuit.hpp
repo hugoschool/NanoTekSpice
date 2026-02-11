@@ -19,6 +19,7 @@ namespace nts {
             IComponent *find(const std::string &);
         private:
             std::unordered_map<std::string, std::unique_ptr<IComponent>> _components;
+            // TODO: global tick
             std::size_t _tick;
     };
 }
