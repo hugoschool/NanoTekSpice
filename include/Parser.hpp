@@ -31,9 +31,10 @@ namespace nts {
             std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> _chipsets;
 
             std::string _line;
+            bool _lineIsStatement;
 
             bool open();
-            bool parseSection(std::stringstream &, const std::string);
+            void parseSection(std::stringstream &, const std::string);
             void parseChipsetLine(const std::string &);
             std::pair<std::size_t, std::shared_ptr<nts::IComponent>> parseLinkPart(std::string &);
             void parseLinkLine(const std::string &);

@@ -5,7 +5,8 @@
 #include <sstream>
 #include <string>
 
-nts::Parser::Parser(const std::string fileName): _factory(), _fileName(fileName), _fileStream(), _line()
+nts::Parser::Parser(const std::string fileName): _factory(), _fileName(fileName), _fileStream(),
+    _line(), _lineIsStatement(false)
 {
 }
 
@@ -50,15 +51,17 @@ void nts::Parser::parse()
 
     std::stringstream ss;
     ss << _fileStream.rdbuf();
-    bool isStatement = false;
-    std::string line;
+
+    if (ss.str().empty()) {
+        throw nts::Exception("File is empty");
+    }
 
     while (!ss.eof()) {
-        if (!isStatement)
-            line = getline(ss);
-        if (line.starts_with(STATEMENT_SYMBOL)) {
-            isStatement = parseSection(ss, line);
-        } else if (!line.empty()) {
+        if (!_lineIsStatement)
+            _line = getline(ss);
+        if (_line.starts_with(STATEMENT_SYMBOL)) {
+            parseSection(ss, _line);
+        } else if (!_line.empty()) {
             throw nts::Exception("Line is not a statement");
         }
     }
@@ -141,16 +144,18 @@ void nts::Parser::parseLinkLine(const std::string &line)
     firstPart.second->setLink(firstPart.first, *secondPart.second, secondPart.first);
 }
 
-// only returns true if the previous line is a statement
-bool nts::Parser::parseSection(std::stringstream &ss, const std::string statement) {
+void nts::Parser::parseSection(std::stringstream &ss, const std::string statement) {
     std::string line;
+    size_t i = 0;
 
-    while (!ss.eof()) {
+    for (; !ss.eof(); i++) {
         line = getline(ss);
         if (line.empty())
             break;
-        if (line.starts_with(STATEMENT_SYMBOL))
-            return true;
+        if (line.starts_with(STATEMENT_SYMBOL)) {
+            _lineIsStatement = true;
+            break;
+        }
 
         if (statement == CHIPSETS_STATEMENT)
             parseChipsetLine(line);
@@ -159,5 +164,7 @@ bool nts::Parser::parseSection(std::stringstream &ss, const std::string statemen
         else
             throw nts::Exception("Statement " + statement + " unknown.");
     }
-    return false;
+    if (i == 0) {
+        throw nts::Exception("Incorrect statement");
+    }
 }
