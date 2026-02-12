@@ -29,7 +29,9 @@ SRC	:=	src/main.cpp \
 		src/components/gates/4030.cpp	\
 		src/components/gates/4069.cpp	\
 		src/components/gates/4071.cpp	\
-		src/components/gates/4081.cpp
+		src/components/gates/4081.cpp	\
+		src/components/advanced/4008.cpp	\
+		src/components/advanced/FullBitAdder.cpp
 OBJ	:=	$(SRC:.cpp=.o)
 
 BINARY	:=	nanotekspice
