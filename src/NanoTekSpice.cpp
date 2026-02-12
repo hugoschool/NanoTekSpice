@@ -2,7 +2,7 @@
 #include "Circuit.hpp"
 #include "Exception.hpp"
 
-nts::NanoTekSpice::NanoTekSpice() : _parser(), _tick(0), _circuits()
+nts::NanoTekSpice::NanoTekSpice() : _parser(), _tick(0), _circuits(), _shell(_circuits, _tick)
 {
 }
 
@@ -28,4 +28,6 @@ void nts::NanoTekSpice::loop()
 {
     if (_circuits.empty())
         throw nts::Exception("No circuits found");
+
+    _shell.loop();
 }

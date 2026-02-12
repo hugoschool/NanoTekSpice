@@ -1,4 +1,5 @@
 #include "Circuit.hpp"
+#include "Exception.hpp"
 #include "components/ClockComponent.hpp"
 #include "components/IComponent.hpp"
 #include "components/InputComponent.hpp"
@@ -24,6 +25,10 @@ void nts::Circuit::add(std::string name, std::shared_ptr<IComponent> component)
 std::shared_ptr<nts::IComponent> nts::Circuit::find(const std::string &name)
 {
     std::unordered_map<std::string, std::shared_ptr<nts::IComponent>>::iterator value = _components.find(name);
+
+    if (value == _components.end()) {
+        throw nts::Exception("Component not found");
+    }
 
     return value->second;
 }

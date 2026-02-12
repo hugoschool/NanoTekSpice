@@ -2,6 +2,7 @@
 
 #include "Circuit.hpp"
 #include "Parser.hpp"
+#include "Shell.hpp"
 #include <cstddef>
 #include <string>
 #include <vector>
@@ -22,5 +23,7 @@ namespace nts {
             std::size_t _tick;
 
             std::vector<nts::Circuit> _circuits;
+
+            nts::Shell _shell;
     };
 }
