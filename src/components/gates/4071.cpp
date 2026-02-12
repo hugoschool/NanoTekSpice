@@ -13,13 +13,17 @@ nts::Component4071::Component4071()
             pin++;
         if (invert) {
             for (int j = 3; j > 0; j--) {
-                setLink(pin, *_component_array[i], j);
+                if (j == 3)
+                    setLink(pin, *_component_array[i], j);
+                _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
             invert = false;
         } else {
             for (int j = 1; j < 4; j++) {
-                setLink(pin, *_component_array[i], j);
+                if (j == 3)
+                    setLink(pin, *_component_array[i], j);
+                _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
             invert = true;

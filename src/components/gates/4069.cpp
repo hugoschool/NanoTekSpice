@@ -15,12 +15,16 @@ nts::Component4069::Component4069()
         }
         if (invert) {
             for (int j = 2; j > 0; j--) {
-                setLink(pin, *_component_array[i], j);
+                if (j == 2)
+                    setLink(pin, *_component_array[i], j);
+                _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
         } else {
             for (int j = 1; j < 3; j++) {
-                setLink(pin, *_component_array[i], j);
+                if (j == 2)
+                    setLink(pin, *_component_array[i], j);
+                _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
         }
