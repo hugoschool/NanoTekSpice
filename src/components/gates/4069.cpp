@@ -15,15 +15,11 @@ nts::Component4069::Component4069()
         }
         if (invert) {
             for (int j = 2; j > 0; j--) {
-                if (j == 2)
-                    setLink(pin, *_component_array[i], j);
                 _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
         } else {
             for (int j = 1; j < 3; j++) {
-                if (j == 2)
-                    setLink(pin, *_component_array[i], j);
                 _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
@@ -40,8 +36,27 @@ nts::Tristate nts::Component4069::compute(std::size_t pin)
     switch (pin) {
         case 7: case 14:
             return nts::Undefined;
+        case 2:
+            _state = _component_array[0]->compute(2);
+            break;
+        case 4:
+            _state = _component_array[1]->compute(2);
+            break;
+        case 6:
+            _state = _component_array[2]->compute(2);
+            break;
+        case 8:
+            _state = _component_array[3]->compute(2);
+            break;
+        case 10:
+            _state = _component_array[4]->compute(2);
+            break;
+        case 12:
+            _state = _component_array[5]->compute(2);
+            break;
         default:
+            _state = getLink(pin);
             break;
     }
-    return getLink(pin);
+    return _state;
 }

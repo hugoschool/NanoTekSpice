@@ -40,8 +40,21 @@ nts::Tristate nts::Component4030::compute(std::size_t pin)
     switch (pin) {
         case 7: case 14:
             return nts::Undefined;
+        case 3:
+            _state = _component_array[0]->compute(3);
+            break;
+        case 4:
+            _state = _component_array[1]->compute(3);
+            break;
+        case 10:
+            _state = _component_array[2]->compute(3);
+            break;
+        case 11:
+            _state = _component_array[3]->compute(3);
+            break;
         default:
+            _state = getLink(pin);
             break;
     }
-    return getLink(pin);
+    return _state;
 }

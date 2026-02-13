@@ -12,16 +12,12 @@ nts::Component4081::Component4081()
             pin++;
         if (invert) {
             for (int j = 3; j > 0; j--) {
-                if (j == 3)
-                    setLink(pin, *_component_array[i], j);
                 _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
             invert = false;
         } else {
             for (int j = 1; j < 4; j++) {
-                if (j == 3)
-                    setLink(pin, *_component_array[i], j);
                 _component_array[i]->setLink(j, *this, pin);
                 pin++;
             }
@@ -39,8 +35,21 @@ nts::Tristate nts::Component4081::compute(std::size_t pin)
     switch (pin) {
         case 7: case 14:
             return nts::Undefined;
+        case 3:
+            _state = _component_array[0]->compute(3);
+            break;
+        case 4:
+            _state = _component_array[1]->compute(3);
+            break;
+        case 10:
+            _state = _component_array[2]->compute(3);
+            break;
+        case 11:
+            _state = _component_array[3]->compute(3);
+            break;
         default:
+            _state = getLink(pin);
             break;
     }
-    return getLink(pin);
+    return _state;
 }
