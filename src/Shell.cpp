@@ -99,7 +99,7 @@ void nts::Shell::loop()
             }
         } else if (line.find("=") != line.npos) {
             commandInputValue(line);
-        } else {
+        } else if (!line.empty()) {
             std::cerr << "Unknown command" << std::endl;
         }
     }
