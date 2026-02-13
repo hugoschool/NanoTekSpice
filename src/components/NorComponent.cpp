@@ -1,4 +1,5 @@
 #include "components/NorComponent.hpp"
+#include "Tristate.hpp"
 #include "components/AComponent.hpp"
 
 nts::NorComponent::NorComponent() : AComponent()
@@ -17,7 +18,7 @@ nts::Tristate nts::NorComponent::compute(std::size_t pin)
             nts::Tristate b = getLink(2);
 
             if (a == nts::True || b == nts::True) {
-                _state = True;
+                _state = False;
                 return _state;
             }
 
