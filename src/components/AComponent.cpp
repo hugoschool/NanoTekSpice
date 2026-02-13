@@ -13,9 +13,8 @@ nts::AComponent::~AComponent()
 {
 }
 
-void nts::AComponent::simulate(std::size_t tick)
+void nts::AComponent::simulate(std::size_t)
 {
-    static_cast<void>(tick);
     for (auto pin : _pins) {
         pin.second.first.setState(pin.second.first.compute(pin.second.second));
     }

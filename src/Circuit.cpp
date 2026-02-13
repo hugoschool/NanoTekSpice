@@ -68,20 +68,15 @@ nts::Tristate nts::Circuit::getState() const
     return Undefined;
 }
 
-void nts::Circuit::setState(nts::Tristate state)
+void nts::Circuit::setState(nts::Tristate)
 {
-    static_cast<void>(state);
 }
 
-nts::Tristate nts::Circuit::compute(std::size_t pin)
+nts::Tristate nts::Circuit::compute(std::size_t)
 {
-    static_cast<void>(pin);
     return nts::Undefined;
 }
 
-void nts::Circuit::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
+void nts::Circuit::setLink(std::size_t, nts::IComponent &, std::size_t)
 {
-    static_cast<void>(pin);
-    static_cast<void>(other);
-    static_cast<void>(otherPin);
 }

@@ -16,9 +16,8 @@ void nts::ClockComponent::store(nts::Tristate state)
     _new_state = std::make_optional(state);
 }
 
-void nts::ClockComponent::simulate(std::size_t tick)
+void nts::ClockComponent::simulate(std::size_t)
 {
-    static_cast<void>(tick);
     // TODO: figure out what the ticks are used for
     if (_new_state.has_value()) {
         _state = _new_state.value();
