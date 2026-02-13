@@ -9,6 +9,7 @@
 #include <iostream>
 #include <memory>
 #include <unordered_map>
+#include <utility>
 
 nts::Circuit::Circuit() : IComponent(), _components()
 {
@@ -20,7 +21,13 @@ nts::Circuit::~Circuit()
 
 void nts::Circuit::add(std::string name, std::shared_ptr<IComponent> component)
 {
-    _components.insert_or_assign(name, std::move(component));
+    _components.insert_or_assign(name, component);
+
+    if (dynamic_cast<InputComponent *>(component.get()) || dynamic_cast<ClockComponent *>(component.get())) {
+        _inputs.insert_or_assign(name, component);
+    } else if (dynamic_cast<OutputComponent *>(component.get())) {
+        _outputs.insert_or_assign(name, component);
+    }
 }
 
 std::shared_ptr<nts::IComponent> nts::Circuit::find(const std::string &name)
@@ -45,21 +52,14 @@ void nts::Circuit::display(std::size_t &tick)
 {
     std::cout << "tick: " << tick << std::endl;
 
-    // TODO: sort in alphabetical order
-    // TODO: unsure about all of this
     std::cout << "input(s):" << std::endl;
-    for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
-        if (dynamic_cast<InputComponent *>(pair.second.get())
-            || dynamic_cast<ClockComponent *>(pair.second.get())) {
-            std::cout << "  " << pair.first << ": " << pair.second->getState() << std::endl;
-        }
+    for (const auto &pair : _inputs) {
+        std::cout << "  " << pair.first << ": " << pair.second->getState() << std::endl;
     }
 
     std::cout << "output(s):" << std::endl;
-    for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
-        if (dynamic_cast<OutputComponent *>(pair.second.get())) {
-            std::cout << "  " << pair.first << ": " << pair.second->getState() << std::endl;
-        }
+    for (const auto &pair : _outputs) {
+        std::cout << "  " << pair.first << ": " << pair.second->getState() << std::endl;
     }
 }
 

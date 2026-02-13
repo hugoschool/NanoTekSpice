@@ -1,6 +1,7 @@
 #pragma once
 
 #include "components/IComponent.hpp"
+#include <map>
 #include <unordered_map>
 #include <memory>
 #include <string>
@@ -21,5 +22,8 @@ namespace nts {
             std::shared_ptr<IComponent> find(const std::string &);
         private:
             std::unordered_map<std::string, std::shared_ptr<IComponent>> _components;
+
+            std::map<std::string, std::shared_ptr<IComponent>> _inputs;
+            std::map<std::string, std::shared_ptr<IComponent>> _outputs;
     };
 }
