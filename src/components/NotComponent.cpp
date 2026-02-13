@@ -13,8 +13,10 @@ nts::Tristate nts::NotComponent::compute(std::size_t pin)
 {
     switch (pin) {
         case 2:
-            return static_cast<nts::Tristate>(!static_cast<bool>(getLink(1)));
+            _state = static_cast<nts::Tristate>(!static_cast<bool>(getLink(1)));
+            return _state;
         default:
-            return getLink(pin);
+            _state = getLink(pin);
+            return _state;
     }
 }

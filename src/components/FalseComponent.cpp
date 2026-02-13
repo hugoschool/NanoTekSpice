@@ -4,6 +4,7 @@
 
 nts::FalseComponent::FalseComponent() : AComponent()
 {
+    _state = nts::False;
 }
 
 nts::FalseComponent::~FalseComponent()
@@ -12,7 +13,8 @@ nts::FalseComponent::~FalseComponent()
 
 nts::Tristate nts::FalseComponent::compute(std::size_t pin)
 {
-    if (pin != 1)
+    if (pin != 1) {
         return nts::Undefined;
-    return nts::False;
+    }
+    return _state;
 }

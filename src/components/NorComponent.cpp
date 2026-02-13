@@ -16,14 +16,20 @@ nts::Tristate nts::NorComponent::compute(std::size_t pin)
             nts::Tristate a = getLink(1);
             nts::Tristate b = getLink(2);
 
-            if (a == nts::True || b == nts::True)
-                return nts::True;
+            if (a == nts::True || b == nts::True) {
+                _state = True;
+                return _state;
+            }
 
-            if (a == nts::Undefined || b == nts::Undefined)
-                return nts::Undefined;
-            return static_cast<nts::Tristate>(!(a || b));
+            if (a == nts::Undefined || b == nts::Undefined) {
+                _state = Undefined;
+                return _state;
+            }
+            _state = static_cast<nts::Tristate>(!(a || b));
+            return _state;
         }
         default:
-            return getLink(pin);
+            _state = getLink(pin);
+            return _state;
     }
 }

@@ -11,11 +11,6 @@ nts::OutputComponent::~OutputComponent()
 
 nts::Tristate nts::OutputComponent::compute(std::size_t pin)
 {
-    switch (pin) {
-        case 2: {
-            return getLink(1);
-        }
-        default:
-            return nts::Undefined;
-    }
+    _state = getLink(pin);
+    return _state;
 }

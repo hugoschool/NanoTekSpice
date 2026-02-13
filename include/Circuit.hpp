@@ -12,6 +12,8 @@ namespace nts {
             ~Circuit();
 
             nts::Tristate compute(std::size_t pin) override;
+            nts::Tristate getState() const override;
+            void setState(Tristate state) override;
             void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) override;
             void simulate(std::size_t tick) override final;
             void display(std::size_t &tick);

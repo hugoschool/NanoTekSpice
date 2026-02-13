@@ -3,6 +3,7 @@
 
 nts::TrueComponent::TrueComponent() : AComponent()
 {
+    _state = nts::True;
 }
 
 nts::TrueComponent::~TrueComponent()
@@ -11,7 +12,8 @@ nts::TrueComponent::~TrueComponent()
 
 nts::Tristate nts::TrueComponent::compute(std::size_t pin)
 {
-    if (pin != 1)
+    if (pin != 1) {
         return nts::Undefined;
-    return nts::True;
+    }
+    return _state;
 }

@@ -1,5 +1,6 @@
 #include "Circuit.hpp"
 #include "Exception.hpp"
+#include "Tristate.hpp"
 #include "components/ClockComponent.hpp"
 #include "components/IComponent.hpp"
 #include "components/InputComponent.hpp"
@@ -50,16 +51,26 @@ void nts::Circuit::display(std::size_t &tick)
     for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
         if (dynamic_cast<InputComponent *>(pair.second.get())
             || dynamic_cast<ClockComponent *>(pair.second.get())) {
-            std::cout << "  " << pair.first << ": " << pair.second->compute(1) << std::endl;
+            std::cout << "  " << pair.first << ": " << pair.second->getState() << std::endl;
         }
     }
 
     std::cout << "output(s):" << std::endl;
     for (std::pair<const std::string, std::shared_ptr<nts::IComponent>> &pair : _components) {
         if (dynamic_cast<OutputComponent *>(pair.second.get())) {
-            std::cout << "  " << pair.first << ": " << pair.second->compute(2) << std::endl;
+            std::cout << "  " << pair.first << ": " << pair.second->getState() << std::endl;
         }
     }
+}
+
+nts::Tristate nts::Circuit::getState() const
+{
+    return Undefined;
+}
+
+void nts::Circuit::setState(nts::Tristate state)
+{
+    static_cast<void>(state);
 }
 
 nts::Tristate nts::Circuit::compute(std::size_t pin)

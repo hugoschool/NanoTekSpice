@@ -1,10 +1,11 @@
 #include "components/AComponent.hpp"
+#include "Tristate.hpp"
 #include "components/IComponent.hpp"
 #include <cstddef>
 #include <stdexcept>
 #include <utility>
 
-nts::AComponent::AComponent() : IComponent()
+nts::AComponent::AComponent() : IComponent(), _state(nts::Undefined)
 {
 }
 
@@ -15,6 +16,9 @@ nts::AComponent::~AComponent()
 void nts::AComponent::simulate(std::size_t tick)
 {
     static_cast<void>(tick);
+    for (auto pin : _pins) {
+        pin.second.first.setState(pin.second.first.compute(pin.second.second));
+    }
 }
 
 void nts::AComponent::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
@@ -34,4 +38,14 @@ nts::Tristate nts::AComponent::getLink(std::size_t pin)
     } catch (const std::out_of_range &) {
         return nts::Undefined;
     }
+}
+
+void nts::AComponent::setState(nts::Tristate state)
+{
+    _state = state;
+}
+
+nts::Tristate nts::AComponent::getState() const
+{
+    return _state;
 }

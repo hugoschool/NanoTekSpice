@@ -20,6 +20,7 @@ nts::Tristate nts::InputComponent::compute(std::size_t pin)
         case 1:
             return _state;
         default:
-            return nts::Undefined;
+            _state = Undefined;
+            return _state;
     }
 }
