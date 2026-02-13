@@ -67,8 +67,10 @@ void nts::Shell::commandInputValue(std::string &line)
         std::shared_ptr<nts::IComponent> ptr = _circuits[_circuitIndex].find(input);
 
         // TODO: simplify this too
-        if (dynamic_cast<nts::InputComponent *>(ptr.get()) || dynamic_cast<nts::ClockComponent *>(ptr.get())) {
+        if (dynamic_cast<nts::InputComponent *>(ptr.get())) {
             dynamic_cast<nts::InputComponent *>(ptr.get())->store(tristate.value());
+        } else if (dynamic_cast<nts::ClockComponent *>(ptr.get())) {
+            dynamic_cast<nts::ClockComponent *>(ptr.get())->store(tristate.value());
         } else {
             std::cerr << "Component is not an input or a clock" << std::endl;
         }
