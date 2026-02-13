@@ -19,7 +19,7 @@ namespace nts {
             std::size_t &_tick;
 
             void commandDisplay();
-            void commandSimulate();
+            void commandSimulate(bool add = true);
             void commandLoop();
             void commandInputValue(std::string &);
 

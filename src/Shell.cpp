@@ -34,9 +34,10 @@ void nts::Shell::commandDisplay()
     _circuits[_circuitIndex].display(_tick);
 }
 
-void nts::Shell::commandSimulate()
+void nts::Shell::commandSimulate(bool add)
 {
-    _tick += 1;
+    if (add)
+        _tick += 1;
     _circuits[_circuitIndex].simulate(_tick);
 }
 
@@ -81,6 +82,7 @@ void nts::Shell::loop()
 {
     std::string line;
 
+    commandSimulate(false);
     while (true) {
         std::cout << "> ";
         if (!std::getline(std::cin, line))
