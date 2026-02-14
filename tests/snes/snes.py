@@ -10,37 +10,42 @@ class Colors:
     RESET = '\033[0m'
 
 class Test:
-    def __init__(self, ntsFile, inputFile, outputFile, exitCodeCheck = False):
+    def __init__(self, ntsFile):
+        self.ntsFile = os.path.join(BASE_DIR, "files", ntsFile)
+
         # True = success, False = failure
         self.state = False
 
-        self.ntsFile = os.path.join(BASE_DIR, "files", ntsFile)
-        self.inputFile = os.path.join(BASE_DIR, "files", inputFile)
-        self.outputFile = os.path.join(BASE_DIR, "files", outputFile)
+    def run(self):
+        pass
 
-        # exitCodeCheck checks for an 84 return (mostly for parsing)
-        self.exitCodeCheck = exitCodeCheck
+class ExitCodeTest(Test):
+    def __init__(self, ntsFile, exitCode = 84):
+        super().__init__(ntsFile)
+
+        self.exitCode = exitCode
 
     def run(self):
-        if self.exitCodeCheck:
-            return self.exitCodeRun()
-        else:
-            return self.fileRun()
-
-    def exitCodeRun(self):
         # TODO: this can be replaced with subprocess.Popen
         command = os.popen(f"{NANOTEKSPICE_FILE} {self.ntsFile} 1>/dev/null 2>/dev/null")
 
         status = command.close()
         if status:
-            if os.waitstatus_to_exitcode(status) == 84:
+            if os.waitstatus_to_exitcode(status) == self.exitCode:
                 self.state = True
             else:
                 self.state = False
 
         return self.state
 
-    def fileRun(self):
+class ContentTest(Test):
+    def __init__(self, ntsFile, inputFile, outputFile):
+        super().__init__(ntsFile)
+
+        self.inputFile = os.path.join(BASE_DIR, "files", inputFile)
+        self.outputFile = os.path.join(BASE_DIR, "files", outputFile)
+
+    def run(self):
         # diff --ignore-all-space to ignore trailing newline messages
         command = os.popen(f"diff --ignore-all-space <({NANOTEKSPICE_FILE} {self.ntsFile} < {self.inputFile}) {self.outputFile} 2>&1")
 
@@ -54,10 +59,10 @@ class Test:
 class SNES:
     def __init__(self):
         self.tests = [
-            Test("and.nts", "and.input", "and.output"),
-            Test("or.nts", "or.input", "or.output"),
-            Test("false.nts", "true_false.input", "false.output"),
-            Test("true.nts", "true_false.input", "true.output"),
+            ContentTest("and.nts", "and.input", "and.output"),
+            ContentTest("or.nts", "or.input", "or.output"),
+            ContentTest("false.nts", "true_false.input", "false.output"),
+            ContentTest("true.nts", "true_false.input", "true.output"),
             # TODO: all gates
             # TODO: clock
             # TODO: input_output
@@ -65,8 +70,8 @@ class SNES:
             # TODO: xor
 
             # Parsing errors
-            Test("empty_with_comments.nts", "", "", True),
-            Test("empty.nts", "", "", True),
+            ExitCodeTest("empty_with_comments.nts"),
+            ExitCodeTest("empty.nts"),
         ]
         self.passed_tests = 0
         self.failed_tests = 0
