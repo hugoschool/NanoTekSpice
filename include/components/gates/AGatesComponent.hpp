@@ -14,7 +14,7 @@ namespace nts {
                 std::size_t pin = 1;
 
                 for (std::size_t i = 0; i < _component_array.size(); i++) {
-                    _component_array[i] = std::make_shared<T>();
+                    _component_array[i] = std::make_unique<T>();
                     if (pin == 7)
                         pin++;
                     if (invert) {
@@ -59,6 +59,6 @@ namespace nts {
             };
 
         protected:
-            std::array<std::shared_ptr<T>, 4> _component_array;
+            std::array<std::unique_ptr<T>, 4> _component_array;
     };
 }
