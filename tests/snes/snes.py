@@ -59,21 +59,45 @@ class ContentTest(Test):
 class SNES:
     def __init__(self):
         self.tests = [
-            ContentTest("and.nts", "and.input", "and.output"),
-            ContentTest("or.nts", "or.input", "or.output"),
-            ContentTest("false.nts", "true_false.input", "false.output"),
-            ContentTest("true.nts", "true_false.input", "true.output"),
-            ContentTest("not.nts", "not.input", "not.output"),
-            ContentTest("xor.nts", "xor.input", "xor.output"),
+            ContentTest(
+                "components/elementary/and.nts",
+                "components/elementary/and.input",
+                "components/elementary/and.output"
+            ),
+            ContentTest(
+                "components/elementary/or.nts",
+                "components/elementary/or.input",
+                "components/elementary/or.output"
+            ),
+            ContentTest(
+                "components/elementary/false.nts",
+                "components/elementary/true_false.input",
+                "components/elementary/false.output"
+            ),
+            ContentTest(
+                "components/elementary/true.nts",
+                "components/elementary/true_false.input",
+                "components/elementary/true.output"
+            ),
+            ContentTest(
+                "components/elementary/not.nts",
+                "components/elementary/not.input",
+                "components/elementary/not.output"
+            ),
+            ContentTest(
+                "components/elementary/xor.nts",
+                "components/elementary/xor.input",
+                "components/elementary/xor.output"
+            ),
             # TODO: all gates
             # TODO: clock
             # TODO: input_output
 
             # Parsing errors
-            ExitCodeTest("empty_with_comments.nts"),
-            ExitCodeTest("empty.nts"),
-            ExitCodeTest("unknown_link.nts"),
-            ExitCodeTest("only_links.nts"),
+            ExitCodeTest("parsing/empty_with_comments.nts"),
+            ExitCodeTest("parsing/empty.nts"),
+            ExitCodeTest("parsing/unknown_link.nts"),
+            ExitCodeTest("parsing/only_links.nts"),
             ExitCodeTest("nonexistant.file.unknown.fake"),
         ]
         self.passed_tests = 0
