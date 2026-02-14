@@ -1,19 +1,12 @@
 #pragma once
 
-#include "components/AComponent.hpp"
 #include "components/XorComponent.hpp"
-#include <array>
-#include <memory>
+#include "components/gates/AGatesComponent.hpp"
 
 namespace nts {
-    class Component4030 : public AComponent {
+    class Component4030 : public AGatesComponent<nts::XorComponent> {
         public:
             Component4030();
             ~Component4030();
-
-            nts::Tristate compute(std::size_t pin) override;
-
-        private:
-            std::array<std::shared_ptr<nts::XorComponent>, 4> _component_array;
     };
 }
