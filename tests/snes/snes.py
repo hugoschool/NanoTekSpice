@@ -27,7 +27,7 @@ class ExitCodeTest(Test):
 
     def run(self):
         # TODO: this can be replaced with subprocess.Popen
-        command = os.popen(f"{NANOTEKSPICE_FILE} {self.ntsFile} 1>/dev/null 2>/dev/null")
+        command = os.popen(f"{NANOTEKSPICE_FILE} {self.ntsFile} < <(echo \"\") 1>/dev/null 2>/dev/null")
 
         status = command.close()
         if status:
@@ -35,6 +35,8 @@ class ExitCodeTest(Test):
                 self.state = True
             else:
                 self.state = False
+        else:
+            self.state = True
 
         return self.state
 
@@ -89,16 +91,30 @@ class SNES:
                 "components/elementary/xor.input",
                 "components/elementary/xor.output"
             ),
+            ContentTest(
+                "components/elementary/input_output.nts",
+                "components/elementary/input_output.input",
+                "components/elementary/input_output.output"
+            ),
             # TODO: all gates
             # TODO: clock
-            # TODO: input_output
 
             # Parsing errors
+            ExitCodeTest("parsing/empty_chipsets.nts"),
+            ExitCodeTest("parsing/not_enough_arguments_chipsets.nts"),
+            ExitCodeTest("parsing/not_enough_arguments_links.nts"),
+            ExitCodeTest("parsing/too_many_arguments_chipsets.nts"),
+            ExitCodeTest("parsing/too_many_arguments_links.nts"),
+            ExitCodeTest("parsing/valid_with_invalid.nts"),
             ExitCodeTest("parsing/empty_with_comments.nts"),
             ExitCodeTest("parsing/empty.nts"),
             ExitCodeTest("parsing/unknown_link.nts"),
             ExitCodeTest("parsing/only_links.nts"),
             ExitCodeTest("nonexistant.file.unknown.fake"),
+
+            # Valid parsing
+            ExitCodeTest("parsing/tabs_and_spaces.nts", 0),
+            ExitCodeTest("parsing/line_with_comments.nts", 0),
         ]
         self.passed_tests = 0
         self.failed_tests = 0
