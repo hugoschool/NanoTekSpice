@@ -1,19 +1,12 @@
 #pragma once
 
-#include "components/AComponent.hpp"
 #include "components/NandComponent.hpp"
-#include <array>
-#include <memory>
+#include "components/gates/AGatesComponent.hpp"
 
 namespace nts {
-    class Component4011 : public AComponent {
+    class Component4011 : public AGatesComponent<nts::NandComponent> {
         public:
             Component4011();
             ~Component4011();
-
-            nts::Tristate compute(std::size_t pin) override;
-
-        private:
-            std::array<std::shared_ptr<nts::NandComponent>, 4> _component_array;
     };
 }
