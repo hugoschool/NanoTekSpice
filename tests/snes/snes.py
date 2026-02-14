@@ -63,15 +63,18 @@ class SNES:
             ContentTest("or.nts", "or.input", "or.output"),
             ContentTest("false.nts", "true_false.input", "false.output"),
             ContentTest("true.nts", "true_false.input", "true.output"),
+            ContentTest("not.nts", "not.input", "not.output"),
+            ContentTest("xor.nts", "xor.input", "xor.output"),
             # TODO: all gates
             # TODO: clock
             # TODO: input_output
-            # TODO: not
-            # TODO: xor
 
             # Parsing errors
             ExitCodeTest("empty_with_comments.nts"),
             ExitCodeTest("empty.nts"),
+            ExitCodeTest("unknown_link.nts"),
+            ExitCodeTest("only_links.nts"),
+            ExitCodeTest("nonexistant.file.unknown.fake"),
         ]
         self.passed_tests = 0
         self.failed_tests = 0
@@ -90,7 +93,7 @@ class SNES:
 
         for test in self.tests:
             if test.state == False:
-                print(f"Test {Colors.RED}{test.ntsFile} failed{Colors.RESET}", file=sys.stderr)
+                print(f"Test {Colors.RED}{os.path.basename(test.ntsFile)} failed{Colors.RESET}", file=sys.stderr)
 
 if __name__ == "__main__":
     if not os.path.isfile(NANOTEKSPICE_FILE):
