@@ -1,0 +1,6 @@
+.chipsets:
+input i # input
+output o # this is an output
+
+.links:
+i:1 o:1 # this is a link
