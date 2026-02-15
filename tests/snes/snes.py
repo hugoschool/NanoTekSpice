@@ -97,6 +97,11 @@ class SNES:
                 "components/elementary/input_output.input",
                 "components/elementary/input_output.output"
             ),
+            ContentTest(
+                "components/elementary/clock.nts",
+                "components/elementary/clock.input",
+                "components/elementary/clock.output"
+            ),
 
             # Gates
             ContentTest(
@@ -129,7 +134,6 @@ class SNES:
                 "components/gates/common.input",
                 "components/gates/4081_and.output"
             ),
-            # TODO: clock
 
             # Parsing errors
             ExitCodeTest("parsing/empty_chipsets.nts"),
