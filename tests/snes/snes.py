@@ -61,6 +61,7 @@ class ContentTest(Test):
 class SNES:
     def __init__(self):
         self.tests = [
+            # Elementary
             ContentTest(
                 "components/elementary/and.nts",
                 "components/elementary/and.input",
@@ -96,7 +97,38 @@ class SNES:
                 "components/elementary/input_output.input",
                 "components/elementary/input_output.output"
             ),
-            # TODO: all gates
+
+            # Gates
+            ContentTest(
+                "components/gates/4001_nor.nts",
+                "components/gates/common.input",
+                "components/gates/4001_nor.output"
+            ),
+            ContentTest(
+                "components/gates/4011_nand.nts",
+                "components/gates/common.input",
+                "components/gates/4011_nand.output"
+            ),
+            ContentTest(
+                "components/gates/4030_xor.nts",
+                "components/gates/common.input",
+                "components/gates/4030_xor.output"
+            ),
+            ContentTest(
+                "components/gates/4069_not.nts",
+                "components/gates/4069_not.input",
+                "components/gates/4069_not.output"
+            ),
+            ContentTest(
+                "components/gates/4071_or.nts",
+                "components/gates/common.input",
+                "components/gates/4071_or.output"
+            ),
+            ContentTest(
+                "components/gates/4081_and.nts",
+                "components/gates/common.input",
+                "components/gates/4081_and.output"
+            ),
             # TODO: clock
 
             # Parsing errors
