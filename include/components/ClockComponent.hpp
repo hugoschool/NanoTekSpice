@@ -12,10 +12,11 @@ namespace nts {
             void store(nts::Tristate);
             void simulate(std::size_t tick) override;
             nts::Tristate compute(std::size_t pin) override;
+            Tristate getState() const override;
         private:
             // Sort of workaround for the cl=0 which directly set after simulate
             std::optional<nts::Tristate> _new_state;
 
-            nts::Tristate _state;
+            std::size_t _tick;
     };
 }
