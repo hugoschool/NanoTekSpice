@@ -14,6 +14,6 @@ namespace nts {
             nts::Tristate compute(std::size_t pin) override;
 
         private:
-            std::array<std::shared_ptr<nts::FullBitAdder>, 4> _component_array;
+            std::array<std::unique_ptr<nts::FullBitAdder>, 4> _component_array;
     };
 }

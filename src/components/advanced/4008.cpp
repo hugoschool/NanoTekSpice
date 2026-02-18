@@ -13,7 +13,7 @@ nts::Component4008::Component4008()
     std::size_t pin = 2;
 
     for (std::size_t i = _component_array.size(); i > 0; i--)
-        _component_array[i - 1] = std::make_shared<nts::FullBitAdder>();
+        _component_array[i - 1] = std::make_unique<nts::FullBitAdder>();
     for (std::size_t i = _component_array.size(); i > 0; i--) {
         if (pin == 8)
             break;
@@ -31,15 +31,10 @@ nts::Component4008::Component4008()
     _component_array[2]->setLink(3, *_component_array[1], 4);
     _component_array[3]->setLink(3, *_component_array[2], 4);
     _component_array[0]->setLink(5, *this, 10);
-    setLink(10, *_component_array[0], 5);
     _component_array[1]->setLink(5, *this, 11);
-    setLink(11, *_component_array[1], 5);
     _component_array[2]->setLink(5, *this, 12);
-    setLink(12, *_component_array[2], 5);
     _component_array[3]->setLink(5, *this, 13);
-    setLink(13, *_component_array[3], 5);
     _component_array[3]->setLink(4, *this, 14);
-    setLink(14, *_component_array[3], 4);
 }
 
 nts::Component4008::~Component4008()
@@ -51,6 +46,21 @@ nts::Tristate nts::Component4008::compute(std::size_t pin)
     switch (pin) {
         case 8: case 16:
             return nts::Undefined;
+        case 10:
+            _state = _component_array[0]->compute(5);
+            return _state;
+        case 11:
+            _state = _component_array[1]->compute(5);
+            return _state;
+        case 12:
+            _state = _component_array[2]->compute(5);
+            return _state;
+        case 13:
+            _state = _component_array[3]->compute(5);
+            return _state;
+        case 14:
+            _state = _component_array[3]->compute(4);
+            return _state;
         default:
             break;
     }

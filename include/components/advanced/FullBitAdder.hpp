@@ -17,6 +17,6 @@ namespace nts {
         private:
             std::array<std::shared_ptr<nts::AndComponent>, 2> _and_components;
             std::array<std::shared_ptr<nts::XorComponent>, 2> _xor_components;
-            std::shared_ptr<nts::OrComponent> _or_component;
+            std::unique_ptr<nts::OrComponent> _or_component;
     };
 }
