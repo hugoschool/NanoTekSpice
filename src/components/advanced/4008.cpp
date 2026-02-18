@@ -19,7 +19,6 @@ nts::Component4008::Component4008()
             break;
         if (i >= 2)
             for (int j = 1; j < 3; j++) {
-                std::cout << "pin " << pin << " linked with pin x of component : " << j << " on component : " << i - 2 << std::endl;
                 _component_array[i - 2]->setLink(j, *this, pin);
                 pin++;
             }
