@@ -1,6 +1,7 @@
 #include "Parser.hpp"
 #include "Exception.hpp"
 #include "components/IComponent.hpp"
+#include <algorithm>
 #include <iostream>
 #include <memory>
 #include <optional>
@@ -70,7 +71,7 @@ void nts::Parser::parse()
             _line = getline(ss);
         if (_line.starts_with(STATEMENT_SYMBOL)) {
             parseSection(ss, _line);
-        } else if (!_line.empty()) {
+        } else if (!_line.empty() && !std::all_of(_line.begin(),_line.end(),isspace)) {
             throw nts::Exception("Line is not a statement");
         }
     }

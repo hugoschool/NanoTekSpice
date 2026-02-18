@@ -1,0 +1,13 @@
+                        #                                   This is a comment, it's pretty long!
+               #This is a comment, it's pretty long!
+               #                           This is a comment, it's pretty long!
+ #This is a comment, it's pretty long!                                              
+                        
+              
+.chipsets:
+false in
+output out
+
+.links:
+in:1 out:1
+

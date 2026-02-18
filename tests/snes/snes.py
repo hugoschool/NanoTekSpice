@@ -151,6 +151,7 @@ class SNES:
             # Valid parsing
             ExitCodeTest("parsing/tabs_and_spaces.nts", 0),
             ExitCodeTest("parsing/line_with_comments.nts", 0),
+            ExitCodeTest("parsing/valid_with_whitespaces.nts", 0),
         ]
         self.passed_tests = 0
         self.failed_tests = 0
