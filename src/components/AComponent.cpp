@@ -16,7 +16,6 @@ nts::AComponent::~AComponent()
 void nts::AComponent::simulate(std::size_t)
 {
     for (auto pin : _pins) {
-        std::cout << "computing pin : " << pin.second.second << "of component : " << pin.first << std::endl;
         pin.second.first.setState(pin.second.first.compute(pin.second.second));
     }
 }
