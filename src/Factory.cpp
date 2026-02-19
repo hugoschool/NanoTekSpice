@@ -11,6 +11,7 @@
 #include "components/TrueComponent.hpp"
 #include "components/XorComponent.hpp"
 #include "components/advanced/4008.hpp"
+#include "components/advanced/4013.hpp"
 #include "components/gates/4001.hpp"
 #include "components/gates/4011.hpp"
 #include "components/gates/4030.hpp"
@@ -34,6 +35,7 @@ nts::Factory::Factory() : _components({{
     {"xor", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::XorComponent>();}},
     {"4001", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4001>();}},
     {"4011", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4011>();}},
+    {"4013", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4013>();}},
     {"4030", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4030>();}},
     {"4069", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4069>();}},
     {"4071", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4071>();}},
