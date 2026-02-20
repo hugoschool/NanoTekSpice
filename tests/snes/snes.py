@@ -147,10 +147,12 @@ class SNES:
             ExitCodeTest("parsing/unknown_link.nts"),
             ExitCodeTest("parsing/only_links.nts"),
             ExitCodeTest("nonexistant.file.unknown.fake"),
+            ExitCodeTest("parsing/invalid_with_tabs.nts"),
 
             # Valid parsing
             ExitCodeTest("parsing/tabs_and_spaces.nts", 0),
             ExitCodeTest("parsing/line_with_comments.nts", 0),
+            ExitCodeTest("parsing/valid_with_tabs.nts", 0),
             ExitCodeTest("parsing/valid_with_whitespaces.nts", 0),
         ]
         self.passed_tests = 0

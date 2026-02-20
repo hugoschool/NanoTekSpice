@@ -46,5 +46,6 @@ namespace nts {
 
             std::string &getline(std::stringstream &ss);
             void removeComments(std::string &);
+            void removeWhitespaces(std::string &);
     };
 }

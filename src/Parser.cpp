@@ -41,6 +41,18 @@ std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> nts::Parse
     return _chipsets;
 }
 
+// Trim left then trim right
+// could be factored out into utils if needed
+void nts::Parser::removeWhitespaces(std::string &str)
+{
+    str.erase(str.begin(), std::find_if(str.begin(), str.end(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }));
+    str.erase(std::find_if(str.rbegin(), str.rend(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }).base(), str.end());
+}
+
 void nts::Parser::removeComments(std::string &str)
 {
     str = str.substr(0, str.find(COMMENT_SYMBOL));
@@ -50,6 +62,7 @@ std::string &nts::Parser::getline(std::stringstream &ss)
 {
     std::getline(ss, _line);
     removeComments(_line);
+    removeWhitespaces(_line);
     return _line;
 }
 
