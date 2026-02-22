@@ -135,6 +135,13 @@ class SNES:
                 "components/gates/4081_and.output"
             ),
 
+            # Advanced tests
+            ContentTest(
+                "components/advanced/4013_flipflop.nts",
+                "components/advanced/4013_flipflop.input",
+                "components/advanced/4013_flipflop.output"
+            ),
+
             # Parsing errors
             ExitCodeTest("parsing/empty_chipsets.nts"),
             ExitCodeTest("parsing/not_enough_arguments_chipsets.nts"),
