@@ -63,10 +63,15 @@ nts::Tristate nts::FlipFlop::compute(std::size_t pin)
                     _state = nts::False;
             }
             return _state;
+        // The 6 should NEVER EVER be computed and used as such!!
+        // Always use getReverseState after computing 6
+        // This just assures that the truth table is respected
+        //
+        // See Component4013::compute for more info please
         case 6:
             if (set == nts::True && reset == nts::True)
                 return nts::True;
-            return getReverseState();
+            return compute(5);
     }
     return _state;
 }
