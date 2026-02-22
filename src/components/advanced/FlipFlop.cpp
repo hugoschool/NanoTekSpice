@@ -16,6 +16,11 @@
 //
 // [1]: https://www.electronics-tutorials.ws/sequential/seq_4.html
 
+// Important:
+// This FlipFlop component is weird and acts weirdly on its own.
+// This is due to the /Q (Qbis) setting the state in a weird way.
+// Check out the Component4013 for a good example on how to use this component.
+
 nts::FlipFlop::FlipFlop() : AComponent(), _reversedState(nts::Undefined)
 {
     _previousClock = getLink(4);
@@ -37,17 +42,6 @@ nts::Tristate nts::FlipFlop::getReverseState()
         return nts::Undefined;
     _reversedState = static_cast<nts::Tristate>(!static_cast<bool>(_state));
     return _reversedState;
-}
-
-nts::Tristate nts::FlipFlop::computeReverse()
-{
-    nts::Tristate set = getLink(2);
-    nts::Tristate reset = getLink(3);
-
-    if (set == nts::True && reset == nts::True)
-        return nts::True;
-    compute(5);
-    return getReverseState();
 }
 
 nts::Tristate nts::FlipFlop::compute(std::size_t pin)
@@ -75,12 +69,11 @@ nts::Tristate nts::FlipFlop::compute(std::size_t pin)
                     _state = nts::False;
             }
             return _state;
-        // The 6 should NEVER be computed with the normal compute function.
-        // It has a weird edge case, always use the computeReverse function instead.
-        // Check the 4013_flipflop.pdf document for more info but here essentially:
-        //
-        // The truth table has this case where the set and reset are true, then
-        // both Q and /Q should return true.
+        case 6:
+            if (set == nts::True && reset == nts::True)
+                return nts::True;
+            compute(5);
+            return getReverseState();
     }
     return _state;
 }

@@ -40,13 +40,13 @@ nts::Tristate nts::Component4013::compute(std::size_t pin)
             _state = _array[0]->compute(5);
             return _state;
         case 2:
-            _state = _array[0]->computeReverse();
+            _state = _array[0]->compute(6);
             return _state;
         case 13:
             _state = _array[1]->compute(5);
             return _state;
         case 12:
-            _state = _array[1]->computeReverse();
+            _state = _array[1]->compute(6);
             return _state;
         default:
             break;
