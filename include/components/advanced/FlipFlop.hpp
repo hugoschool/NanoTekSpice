@@ -9,6 +9,7 @@ namespace nts {
             ~FlipFlop();
 
             nts::Tristate compute(std::size_t pin) override;
+            nts::Tristate computeReverse();
             void simulate(std::size_t tick) override;
             nts::Tristate getReverseState();
 

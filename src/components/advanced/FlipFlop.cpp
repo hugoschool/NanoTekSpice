@@ -1,6 +1,7 @@
 #include "components/advanced/FlipFlop.hpp"
 #include "Tristate.hpp"
 #include "components/AComponent.hpp"
+#include <cstddef>
 
 // Pin 1: Data
 // Pin 2: Set
@@ -38,6 +39,17 @@ nts::Tristate nts::FlipFlop::getReverseState()
     return _reversedState;
 }
 
+nts::Tristate nts::FlipFlop::computeReverse()
+{
+    nts::Tristate set = getLink(2);
+    nts::Tristate reset = getLink(3);
+
+    if (set == nts::True && reset == nts::True)
+        return nts::True;
+    compute(5);
+    return getReverseState();
+}
+
 nts::Tristate nts::FlipFlop::compute(std::size_t pin)
 {
     nts::Tristate data = getLink(1);
@@ -63,15 +75,12 @@ nts::Tristate nts::FlipFlop::compute(std::size_t pin)
                     _state = nts::False;
             }
             return _state;
-        // The 6 should NEVER EVER be computed and used as such!!
-        // Always use getReverseState after computing 6
-        // This just assures that the truth table is respected
+        // The 6 should NEVER be computed with the normal compute function.
+        // It has a weird edge case, always use the computeReverse function instead.
+        // Check the 4013_flipflop.pdf document for more info but here essentially:
         //
-        // See Component4013::compute for more info please
-        case 6:
-            if (set == nts::True && reset == nts::True)
-                return nts::True;
-            return compute(5);
+        // The truth table has this case where the set and reset are true, then
+        // both Q and /Q should return true.
     }
     return _state;
 }
