@@ -44,3 +44,12 @@ simulate
 display
 simulate
 display
+
+cl_1_clock=0
+in_1_data=1
+in_1_reset=0
+in_1_set=0
+simulate
+display
+simulate
+display
