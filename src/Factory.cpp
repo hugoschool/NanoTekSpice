@@ -12,6 +12,7 @@
 #include "components/XorComponent.hpp"
 #include "components/advanced/4008.hpp"
 #include "components/advanced/4013.hpp"
+#include "components/advanced/LoggerComponent.hpp"
 #include "components/gates/4001.hpp"
 #include "components/gates/4011.hpp"
 #include "components/gates/4030.hpp"
@@ -41,6 +42,7 @@ nts::Factory::Factory() : _components({{
     {"4081", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4081>();}},
     {"4008", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4008>();}},
     {"4013", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4013>();}},
+    {"logger", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::LoggerComponent>();}},
 }})
 {
 }

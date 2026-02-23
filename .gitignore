@@ -7,3 +7,6 @@ nanotekspice
 # Cache
 .cache
 compile_commands.json
+
+*.bin
+!tests/**/*.bin
