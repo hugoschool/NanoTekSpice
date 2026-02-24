@@ -15,13 +15,16 @@
 // Pin 9: Clock
 // Pin 10: Inhibit (Input)
 
-nts::LoggerComponent::LoggerComponent() : AComponent()
+nts::LoggerComponent::LoggerComponent() : AComponent(), _file()
 {
     _previousClock = getLink(9);
+    _file.open("./log.bin", std::ios_base::app);
 }
 
 nts::LoggerComponent::~LoggerComponent()
 {
+    if (_file.is_open())
+        _file.close();
 }
 
 void nts::LoggerComponent::simulate(std::size_t tick)
@@ -45,26 +48,18 @@ nts::Tristate nts::LoggerComponent::compute(std::size_t)
     nts::Tristate clock = getLink(9);
     nts::Tristate inhibit = getLink(10);
 
-    if (inhibit != nts::False) {
+    if (inhibit != nts::False || _file.fail() || !_file.is_open()) {
         _previousClock = clock;
         return nts::Undefined;
     }
     if (_previousClock == nts::False && clock == nts::True) {
-        std::ofstream file;
-
-        file.open("./log.bin", std::ios_base::app);
-        if (file.fail()) {
-            _previousClock = clock;
-            return nts::Undefined;
-        }
-
         std::uint8_t byte = 0;
         for (std::size_t i = 0; i < inputs.size(); i++) {
             if (inputs[i].first == nts::True) {
                 byte = byte | inputs[i].second;
             }
         }
-        file << byte;
+        _file << byte;
     }
     _previousClock = clock;
     return nts::Undefined;

@@ -2,6 +2,7 @@
 
 #include "Tristate.hpp"
 #include "components/AComponent.hpp"
+#include <fstream>
 
 namespace nts {
     class LoggerComponent : public AComponent {
@@ -14,5 +15,6 @@ namespace nts {
 
         private:
             nts::Tristate _previousClock;
+            std::ofstream _file;
     };
 }
