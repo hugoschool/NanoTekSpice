@@ -163,6 +163,13 @@ class SNES:
 
             # Advanced tests
 
+            ## 4008
+            ContentTest(
+                "components/advanced/4008_adder.nts",
+                "components/advanced/4008_adder.input",
+                "components/advanced/4008_adder.output"
+            ),
+
             ## 4013
             # Test the first flipflop
             ContentTest(
