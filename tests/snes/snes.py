@@ -58,6 +58,32 @@ class ContentTest(Test):
         command.close()
         return self.state
 
+class LoggerTest(ContentTest):
+    def __init__(self, ntsFile, inputFile, outputFile, binOutputFile):
+        super().__init__(ntsFile, inputFile, outputFile)
+
+        self.binOutputFile = os.path.join(BASE_DIR, "files", binOutputFile)
+
+    def run(self):
+        if os.path.exists("./log.bin"):
+            os.remove("./log.bin")
+
+        if super().run() == False:
+            self.state = False
+            return False
+
+        binOutputContent = ""
+        with open(self.binOutputFile, "r") as f:
+            binOutputContent = f.read()
+
+        with open("./log.bin", "r") as f:
+            if binOutputContent != f.read():
+                self.state = False
+            else:
+                self.state = True
+
+        return self.state
+
 class SNES:
     def __init__(self):
         self.tests = [
@@ -157,6 +183,14 @@ class SNES:
                 "components/advanced/4013_flipflop.nts",
                 "components/advanced/4013/4013_flipflop_unknown.input",
                 "components/advanced/4013/4013_flipflop_unknown.output"
+            ),
+
+            ## Logger
+            LoggerTest(
+                "components/advanced/logger.nts",
+                "components/advanced/logger.input",
+                "components/advanced/logger.output",
+                "components/advanced/logger.bin.output"
             ),
 
             # Parsing errors
