@@ -35,20 +35,15 @@ void nts::Component4017::simulate(std::size_t tick)
 {
     static_cast<void>(tick);
     Tristate reset = getLink(15);
-    Tristate cp0 = getLink(14);
-    Tristate cp1 = getLink(13);
+    Tristate cp0 = _pins.at(14).first.getState();
+    Tristate cp1 = _pins.at(13).first.getState();
 
-    if (cp0 == Undefined) {
+    if (cp0 == Undefined)
         _pins.at(14).first.setState(_pins.at(14).first.compute(_pins.at(14).second));
-    }
-    if (cp1 == Undefined) {
+    if (cp1 == Undefined)
         _pins.at(13).first.setState(_pins.at(13).first.compute(_pins.at(13).second));
-    }
-    if (reset == True) {
-        _pins.at(15).first.setState(False);
-        reset = getLink(15);
+    if (reset == True)
         _currentIndex = 0;
-    }
     for (auto pin: _pins) {
         if ((pin.first == 14 && cp0 == False && pin.second.first.compute(pin.second.second) == True)
             || (pin.first == 15 && cp1 == True && pin.second.first.compute(pin.second.second) == False)) {
