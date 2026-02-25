@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Tristate.hpp"
 #include "components/AComponent.hpp"
 
 namespace nts {
@@ -10,7 +11,12 @@ namespace nts {
 
             nts::Tristate compute(std::size_t pin) override;
             void simulate(std::size_t tick) override;
+
         private:
+            void increaseIndex();
+
             int _currentIndex;
+            nts::Tristate _previousClock;
+            nts::Tristate _previousInverseClock;
     };
 }
