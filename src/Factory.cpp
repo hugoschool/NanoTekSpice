@@ -13,6 +13,7 @@
 #include "components/advanced/4008.hpp"
 #include "components/advanced/4013.hpp"
 #include "components/advanced/4017.hpp"
+#include "components/advanced/4512.hpp"
 #include "components/advanced/LoggerComponent.hpp"
 #include "components/gates/4001.hpp"
 #include "components/gates/4011.hpp"
@@ -45,6 +46,7 @@ nts::Factory::Factory() : _components({{
     {"4013", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4013>();}},
     {"logger", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::LoggerComponent>();}},
     {"4017", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4017>();}},
+    {"4512", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4512>();}},
 }})
 {
 }
