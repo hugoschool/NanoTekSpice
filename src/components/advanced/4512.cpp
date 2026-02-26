@@ -36,7 +36,7 @@ nts::Tristate nts::Component4512::decide_state()
     if (a == False && b == True && c == True && inhibit == False && enable == False)
         return getLink(7);
     if (a == True && b == True && c == True && inhibit == False && enable == False)
-        return getLink(8);
+        return getLink(9);
     return Undefined;
 }
 
