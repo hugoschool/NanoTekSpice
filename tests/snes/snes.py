@@ -199,6 +199,13 @@ class SNES:
                 "components/advanced/4017_johnson.output"
             ),
 
+            ## 4512
+            ContentTest(
+                "components/advanced/4512_selector.nts",
+                "components/advanced/4512_selector.input",
+                "components/advanced/4512_selector.output"
+            ),
+
             ## Logger
             LoggerTest(
                 "components/advanced/logger.nts",
