@@ -27,7 +27,7 @@ class ExitCodeTest(Test):
 
     def run(self):
         # TODO: this can be replaced with subprocess.Popen
-        command = os.popen(f"{NANOTEKSPICE_FILE} {self.ntsFile} < <(echo \"\") 1>/dev/null 2>/dev/null")
+        command = os.popen(f"bash -c \"{NANOTEKSPICE_FILE} {self.ntsFile} < <(echo) 1>/dev/null 2>/dev/null\"")
 
         status = command.close()
         if status:
@@ -49,7 +49,7 @@ class ContentTest(Test):
 
     def run(self):
         # diff --ignore-all-space to ignore trailing newline messages
-        command = os.popen(f"diff --ignore-all-space <({NANOTEKSPICE_FILE} {self.ntsFile} < {self.inputFile}) {self.outputFile} 2>&1")
+        command = os.popen(f"bash -c \"diff --ignore-all-space <({NANOTEKSPICE_FILE} {self.ntsFile} < {self.inputFile}) {self.outputFile} 2>&1\"")
 
         if len(command.read()) > 0:
             self.state = False
@@ -75,6 +75,10 @@ class LoggerTest(ContentTest):
         binOutputContent = ""
         with open(self.binOutputFile, "r") as f:
             binOutputContent = f.read()
+
+        if not os.path.exists("./log.bin"):
+            self.state = False
+            return False
 
         with open("./log.bin", "r") as f:
             if binOutputContent != f.read():
