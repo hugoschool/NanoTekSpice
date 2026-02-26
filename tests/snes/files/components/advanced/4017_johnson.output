@@ -1,0 +1,528 @@
+> tick: 0
+input(s):
+  in_0: U
+  in_1: U
+  in_r: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_8: U
+  out_9: U
+  out_s: U
+> > tick: 1
+input(s):
+  in_0: U
+  in_1: U
+  in_r: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_8: U
+  out_9: U
+  out_s: U
+> > > > tick: 2
+input(s):
+  in_0: 0
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > tick: 3
+input(s):
+  in_0: 0
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > tick: 4
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 1
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 6
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 1
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 8
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 1
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 10
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 1
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 12
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 1
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 0
+> > > > > tick: 14
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 1
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 0
+> > > > > tick: 16
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 1
+  out_8: 0
+  out_9: 0
+  out_s: 0
+> > > > > tick: 18
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 1
+  out_9: 0
+  out_s: 0
+> > > > > tick: 20
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 1
+  out_s: 0
+> > > > > tick: 22
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 24
+input(s):
+  in_0: 1
+  in_1: U
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 1
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > > > > tick: 26
+input(s):
+  in_0: 0
+  in_1: 0
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > tick: 27
+input(s):
+  in_0: 0
+  in_1: 0
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > tick: 28
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 30
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 1
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 32
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 1
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 34
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 1
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 36
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 1
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > tick: 38
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 1
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 0
+> > > > > tick: 40
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 1
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 0
+> > > > > tick: 42
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 1
+  out_8: 0
+  out_9: 0
+  out_s: 0
+> > > > > tick: 44
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 1
+  out_9: 0
+  out_s: 0
+> > > > > tick: 46
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 1
+  out_s: 0
+> > > > > tick: 48
+input(s):
+  in_0: 0
+  in_1: 1
+  in_r: U
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > > > > > tick: 50
+input(s):
+  in_0: 0
+  in_1: 0
+  in_r: 1
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > tick: 51
+input(s):
+  in_0: 1
+  in_1: 0
+  in_r: 1
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > > tick: 52
+input(s):
+  in_0: 0
+  in_1: 0
+  in_r: 1
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> 

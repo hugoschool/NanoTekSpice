@@ -192,6 +192,13 @@ class SNES:
                 "components/advanced/4013/4013_flipflop_unknown.output"
             ),
 
+            ## 4017
+            ContentTest(
+                "components/advanced/4017_johnson.nts",
+                "components/advanced/4017_johnson.input",
+                "components/advanced/4017_johnson.output"
+            ),
+
             ## Logger
             LoggerTest(
                 "components/advanced/logger.nts",
