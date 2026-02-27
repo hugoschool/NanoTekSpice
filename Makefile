@@ -35,6 +35,7 @@ SRC	:=	src/main.cpp \
 		src/components/advanced/4008.cpp	\
 		src/components/advanced/4013.cpp	\
 		src/components/advanced/4017.cpp	\
+		src/components/advanced/4094.cpp	\
 		src/components/advanced/4512.cpp	\
 		src/components/advanced/LoggerComponent.cpp	\
 		src/components/advanced/FlipFlop.cpp	\
