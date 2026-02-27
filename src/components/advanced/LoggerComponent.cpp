@@ -54,12 +54,19 @@ nts::Tristate nts::LoggerComponent::compute(std::size_t)
     }
     if (_previousClock == nts::False && clock == nts::True) {
         std::uint8_t byte = 0;
+        bool isUndefined = false;
+
         for (std::size_t i = 0; i < inputs.size(); i++) {
+            if (inputs[i].first == nts::Undefined) {
+                isUndefined = true;
+                break;
+            }
             if (inputs[i].first == nts::True) {
                 byte = byte | inputs[i].second;
             }
         }
-        _file << byte;
+        if (isUndefined == false)
+            _file << byte;
     }
     _previousClock = clock;
     return nts::Undefined;
