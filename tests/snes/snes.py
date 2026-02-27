@@ -217,6 +217,13 @@ class SNES:
                 "components/advanced/4094_shift.output"
             ),
 
+            ## 4514
+            ContentTest(
+                "components/advanced/4514_decoder.nts",
+                "components/advanced/4514_decoder.input",
+                "components/advanced/4514_decoder.output"
+            ),
+
             ## Logger
             LoggerTest(
                 "components/advanced/logger.nts",
