@@ -1,0 +1,222 @@
+> tick: 0
+input(s):
+  clock: U
+  data: U
+  enable: U
+  strobe: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: U
+  out_qs: U
+> > tick: 1
+input(s):
+  clock: U
+  data: U
+  enable: U
+  strobe: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: U
+  out_qs: U
+> > > > > > > > tick: 3
+input(s):
+  clock: 1
+  data: 0
+  enable: 0
+  strobe: 0
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: U
+  out_qs: U
+> > > tick: 4
+input(s):
+  clock: 0
+  data: 0
+  enable: 0
+  strobe: 0
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: U
+  out_qs: U
+> > > > tick: 5
+input(s):
+  clock: 1
+  data: 0
+  enable: 1
+  strobe: 0
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: U
+  out_qs: U
+> > > > > tick: 7
+input(s):
+  clock: 1
+  data: 0
+  enable: 1
+  strobe: 1
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_qe: U
+  out_qs: 0
+> > > > > tick: 9
+input(s):
+  clock: 1
+  data: 1
+  enable: 1
+  strobe: 1
+output(s):
+  out_0: 1
+  out_1: 1
+  out_2: 1
+  out_3: 1
+  out_4: 1
+  out_5: 1
+  out_6: 1
+  out_7: 1
+  out_qe: U
+  out_qs: 1
+> > tick: 10
+input(s):
+  clock: 0
+  data: 1
+  enable: 1
+  strobe: 1
+output(s):
+  out_0: 1
+  out_1: 1
+  out_2: 1
+  out_3: 1
+  out_4: 1
+  out_5: 1
+  out_6: 1
+  out_7: 1
+  out_qe: 1
+  out_qs: 1
+> > > > tick: 11
+input(s):
+  clock: 1
+  data: 1
+  enable: 0
+  strobe: 1
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: 1
+  out_qs: U
+> > tick: 12
+input(s):
+  clock: 0
+  data: 1
+  enable: 0
+  strobe: 1
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_qe: U
+  out_qs: U
+> > > > > > tick: 13
+input(s):
+  clock: 1
+  data: 0
+  enable: 1
+  strobe: 1
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_qe: U
+  out_qs: 0
+> > > > tick: 14
+input(s):
+  clock: 0
+  data: 0
+  enable: 1
+  strobe: 0
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_qe: U
+  out_qs: 0
+> > tick: 15
+input(s):
+  clock: 1
+  data: 0
+  enable: 1
+  strobe: 0
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_qe: U
+  out_qs: 0
+> 
