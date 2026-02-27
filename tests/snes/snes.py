@@ -187,14 +187,6 @@ class SNES:
                 "components/advanced/4013/4013_flipflop_2.input",
                 "components/advanced/4013/4013_flipflop_2.output"
             ),
-            # This is a test I'm uncertain about the result or even the validity.
-            # It's extracted from the big 4013_flipflop test as to make it more appearant
-            # TODO: remove it once confirmed if it's true/false
-            ContentTest(
-                "components/advanced/4013_flipflop.nts",
-                "components/advanced/4013/4013_flipflop_unknown.input",
-                "components/advanced/4013/4013_flipflop_unknown.output"
-            ),
 
             ## 4017
             ContentTest(
