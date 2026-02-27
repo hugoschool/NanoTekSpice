@@ -13,6 +13,6 @@ namespace nts {
 
             std::shared_ptr<nts::IComponent> createComponent(const std::string &type);
         private:
-            const std::array<std::pair<std::string, std::function<std::shared_ptr<nts::IComponent>()>>, 22> _components;
+            const std::array<std::pair<std::string, std::function<std::shared_ptr<nts::IComponent>()>>, 23> _components;
     };
 }

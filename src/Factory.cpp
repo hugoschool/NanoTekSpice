@@ -13,6 +13,7 @@
 #include "components/advanced/4008.hpp"
 #include "components/advanced/4013.hpp"
 #include "components/advanced/4017.hpp"
+#include "components/advanced/4040.hpp"
 #include "components/advanced/4094.hpp"
 #include "components/advanced/4512.hpp"
 #include "components/advanced/4514.hpp"
@@ -51,6 +52,7 @@ nts::Factory::Factory() : _components({{
     {"4512", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4512>();}},
     {"4094", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4094>();}},
     {"4514", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4514>();}},
+    {"4040", []() -> std::shared_ptr<nts::IComponent>{return std::make_shared<nts::Component4040>();}},
 }})
 {
 }
