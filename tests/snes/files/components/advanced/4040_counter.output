@@ -1,0 +1,613 @@
+> tick: 0
+input(s):
+  cl_clock: U
+  in_reset: U
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > > > > tick: 1
+input(s):
+  cl_clock: 0
+  in_reset: 1
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 2
+input(s):
+  cl_clock: 1
+  in_reset: 1
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 3
+input(s):
+  cl_clock: 0
+  in_reset: 1
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > > > tick: 4
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 5
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 6
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 7
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 1
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 8
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 1
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 9
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 1
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 10
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 1
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 11
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 1
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 12
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 1
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 13
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 14
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 15
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 16
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 17
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 1
+  out_02: 1
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 18
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 1
+  out_02: 1
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 19
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 1
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 20
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 1
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 21
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 22
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 23
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 24
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 25
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 26
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 27
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 28
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 29
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 30
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 31
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 32
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 33
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 1
+  out_02: 1
+  out_03: 1
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 34
+input(s):
+  cl_clock: 1
+  in_reset: 0
+output(s):
+  out_00: 1
+  out_01: 1
+  out_02: 1
+  out_03: 1
+  out_04: 0
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> > tick: 35
+input(s):
+  cl_clock: 0
+  in_reset: 0
+output(s):
+  out_00: 0
+  out_01: 0
+  out_02: 0
+  out_03: 0
+  out_04: 1
+  out_05: 0
+  out_06: 0
+  out_07: 0
+  out_08: 0
+  out_09: 0
+  out_10: 0
+  out_11: 0
+> 

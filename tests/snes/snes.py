@@ -210,6 +210,14 @@ class SNES:
                 "components/advanced/4512_selector.output"
             ),
 
+            ## 4040
+            # Only try the first 32 clock cycles
+            ContentTest(
+                "components/advanced/4040_counter.nts",
+                "components/advanced/4040_counter.input",
+                "components/advanced/4040_counter.output",
+            ),
+
             ## 4094
             ContentTest(
                 "components/advanced/4094_shift.nts",
