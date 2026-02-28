@@ -251,6 +251,9 @@ class SNES:
             ExitCodeTest("parsing/line_with_comments.nts", 0),
             ExitCodeTest("parsing/valid_with_tabs.nts", 0),
             ExitCodeTest("parsing/valid_with_whitespaces.nts", 0),
+
+            # Other tests
+            ExitCodeTest("other/simple_infinite_loop.nts", 0),
         ]
         self.passed_tests = 0
         self.failed_tests = 0

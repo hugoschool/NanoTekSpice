@@ -33,6 +33,8 @@ nts::Tristate nts::AComponent::getLink(std::size_t pin)
         std::pair<nts::IComponent &, std::size_t> pair = _pins.at(pin);
         nts::IComponent &component = pair.first;
 
+        if (&component == this)
+            return getState();
         return component.compute(pair.second);
     } catch (const std::out_of_range &) {
         return nts::Undefined;
