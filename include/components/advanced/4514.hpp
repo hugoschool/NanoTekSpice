@@ -2,6 +2,7 @@
 
 #include "components/AComponent.hpp"
 #include <array>
+#include <optional>
 
 namespace nts {
     class Component4514 : public AComponent {
@@ -14,6 +15,6 @@ namespace nts {
         private:
             std::array<std::pair<std::size_t, uint8_t>, 16> _outputPins;
 
-            uint8_t defineBinaryVal();
+            std::optional<uint8_t> defineBinaryVal();
     };
 }
