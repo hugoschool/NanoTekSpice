@@ -15,10 +15,6 @@ namespace nts {
         private:
             nts::Tristate _previousClock;
             std::size_t _clockCycle;
-            std::unordered_map<std::size_t, nts::Tristate> _storedMap;
-
-            nts::Tristate storePin(std::size_t pin, nts::Tristate state);
-            nts::Tristate getStoredPin(std::size_t pin);
-            bool isPowerOfTwo(std::size_t nb);
+            const std::unordered_map<std::size_t, std::size_t> _pinToIndexMap;
     };
 }
