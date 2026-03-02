@@ -1,8 +1,8 @@
 #pragma once
 
+#include "Pins.hpp"
 #include "components/IComponent.hpp"
 #include <cstddef>
-#include <unordered_map>
 
 namespace nts {
     class AComponent : public IComponent {
@@ -15,8 +15,11 @@ namespace nts {
             nts::Tristate getLink(std::size_t pin);
             void setState(Tristate state) override;
             Tristate getState() const override;
+
+            void setPinState(std::size_t pin, nts::Tristate state) override;
+
         protected:
-            std::unordered_map<std::size_t, std::pair<IComponent &, std::size_t>> _pins;
+            Pins _pins;
             Tristate _state;
     };
 }

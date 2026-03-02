@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Tristate.hpp"
 #include "components/IComponent.hpp"
 #include <map>
 #include <unordered_map>
@@ -20,6 +21,8 @@ namespace nts {
             void display(std::size_t &tick);
             void add(std::string, std::shared_ptr<IComponent>);
             std::shared_ptr<IComponent> find(const std::string &);
+            void setPinState(std::size_t, nts::Tristate) override;
+
         private:
             std::unordered_map<std::string, std::shared_ptr<IComponent>> _components;
 

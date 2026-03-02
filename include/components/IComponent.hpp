@@ -12,5 +12,6 @@ namespace nts {
             virtual void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) = 0;
             virtual void setState(Tristate state) = 0;
             virtual nts::Tristate getState() const = 0;
+            virtual void setPinState(std::size_t pin, nts::Tristate state) = 0;
     };
 }

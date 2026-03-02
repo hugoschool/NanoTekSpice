@@ -1,9 +1,8 @@
 #include "components/AComponent.hpp"
+#include "Pins.hpp"
 #include "Tristate.hpp"
 #include "components/IComponent.hpp"
 #include <cstddef>
-#include <stdexcept>
-#include <utility>
 
 nts::AComponent::AComponent() : IComponent(), _state(nts::Undefined)
 {
@@ -13,30 +12,24 @@ nts::AComponent::~AComponent()
 {
 }
 
-void nts::AComponent::simulate(std::size_t)
+void nts::AComponent::simulate(std::size_t tick)
 {
-    for (auto pin : _pins) {
-        pin.second.first.setState(pin.second.first.compute(pin.second.second));
-    }
+    _pins.simulate(tick);
 }
 
 void nts::AComponent::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
 {
-    std::pair<nts::IComponent &, std::size_t> pair = std::make_pair(std::ref(other), otherPin);
-
-    _pins.insert_or_assign(pin, pair);
+    _pins.setPin(pin, other, otherPin);
 }
 
 nts::Tristate nts::AComponent::getLink(std::size_t pin)
 {
-    try {
-        std::pair<nts::IComponent &, std::size_t> pair = _pins.at(pin);
-        nts::IComponent &component = pair.first;
+    return _pins.getLink(pin);
+}
 
-        return component.compute(pair.second);
-    } catch (const std::out_of_range &) {
-        return nts::Undefined;
-    }
+void nts::AComponent::setPinState(std::size_t pin, nts::Tristate state)
+{
+    _pins.setPinState(pin, state);
 }
 
 void nts::AComponent::setState(nts::Tristate state)

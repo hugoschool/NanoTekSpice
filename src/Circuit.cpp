@@ -90,3 +90,7 @@ nts::Tristate nts::Circuit::compute(std::size_t)
 void nts::Circuit::setLink(std::size_t, nts::IComponent &, std::size_t)
 {
 }
+
+void nts::Circuit::setPinState(std::size_t, nts::Tristate)
+{
+}

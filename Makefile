@@ -12,6 +12,7 @@ SRC	:=	src/main.cpp \
 		src/Factory.cpp \
 		src/NanoTekSpice.cpp \
 		src/Parser.cpp \
+		src/Pins.cpp \
 		src/Shell.cpp \
 		src/Tristate.cpp \
 		src/components/AComponent.cpp \
