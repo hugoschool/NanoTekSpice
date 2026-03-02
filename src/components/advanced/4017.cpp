@@ -54,8 +54,10 @@ void nts::Component4017::simulate(std::size_t tick)
     if ((_previousClock == nts::Undefined && clock != nts::Undefined)
         || (_previousInverseClock == nts::Undefined && inverseClock != nts::Undefined))
         _currentIndex = 0;
-    if ((_previousClock == nts::False && clock == nts::True)
-        || (_previousInverseClock == nts::True && inverseClock == nts::False)) {
+    if ((_previousClock == nts::False && clock == nts::True)) {
+        increaseIndex();
+    }
+    if ((_previousInverseClock == nts::True && inverseClock == nts::False)) {
         increaseIndex();
     }
 
