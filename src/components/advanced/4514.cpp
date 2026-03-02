@@ -27,7 +27,7 @@ nts::Component4514::~Component4514()
 {
 }
 
-std::optional<uint8_t> nts::Component4514::defineBinaryVal()
+uint8_t nts::Component4514::defineBinaryVal()
 {
     uint8_t binary_val = 0;
     std::array<std::pair<nts::Tristate, std::uint8_t>, 4> vals({
@@ -36,12 +36,6 @@ std::optional<uint8_t> nts::Component4514::defineBinaryVal()
         {getLink(21), 0b00000100},
         {getLink(22), 0b00001000},
     });
-
-    for (auto val: vals) {
-        if (val.first == Undefined) {
-            return std::nullopt;
-        }
-    }
 
     for (std::size_t i = 0; i < vals.size(); i++) {
         if (vals[i].first == True) {
@@ -61,10 +55,6 @@ nts::Tristate nts::Component4514::compute(std::size_t pin)
     }
     if (pin > 3 && pin < 21) {
         for (auto pair: _outputPins) {
-            if (!defineBinaryVal().has_value()) {
-                _state = Undefined;
-                break;
-            }
             if (pin == pair.first && defineBinaryVal() == pair.second) {
                 _state = True;
                 break;
