@@ -47,7 +47,7 @@ uint8_t nts::Component4514::defineBinaryVal()
 
 nts::Tristate nts::Component4514::compute(std::size_t pin)
 {
-    if (pin == 12 || pin == 24 || getLink(1) != True)
+    if (pin == 12 || pin == 24)
         return nts::Undefined;
     if (getLink(23) == True) {
         _state = False;
