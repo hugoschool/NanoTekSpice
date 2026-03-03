@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Circuit.hpp"
 #include "Factory.hpp"
 #include "components/IComponent.hpp"
 #include <fstream>
@@ -17,17 +18,31 @@
 namespace nts {
     class Parser {
         public:
-            using IComponentContainer = std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>>;
+            class IComponentContainer {
+                public:
+                    IComponentContainer();
+                    ~IComponentContainer();
+
+                    void addToCircuit(nts::Circuit &);
+                    std::optional<std::shared_ptr<nts::IComponent>> find(const std::string &);
+                    bool empty() const;
+
+                    void addInput(std::pair<std::string, std::shared_ptr<IComponent>> &pair);
+                    void addOutput(std::pair<std::string, std::shared_ptr<IComponent>> &pair);
+                    void addRest(std::pair<std::string, std::shared_ptr<IComponent>> &pair);
+
+                private:
+                    std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> _inputs;
+                    std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> _outputs;
+                    std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> _rest;
+            };
 
             Parser();
             ~Parser();
 
+            nts::Parser::IComponentContainer getContainer() const;
             void setFileName(const std::string);
-
             void parse();
-            IComponentContainer getChipsets() const;
-            IComponentContainer getInputs() const;
-            IComponentContainer getOutputs() const;
 
         private:
             nts::Factory _factory;
@@ -35,9 +50,7 @@ namespace nts {
             std::string _fileName;
             std::ifstream _fileStream;
 
-            IComponentContainer _chipsets;
-            IComponentContainer _inputs;
-            IComponentContainer _outputs;
+            IComponentContainer _container;
 
             std::string _line;
             bool _lineIsStatement;

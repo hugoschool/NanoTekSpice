@@ -18,20 +18,7 @@ void nts::NanoTekSpice::addCircuit(const std::string fileName)
 
     nts::Circuit circuit;
 
-    const nts::Parser::IComponentContainer chipsets = _parser.getChipsets();
-    for (const auto &pair : chipsets) {
-        circuit.addComponent(pair.first, pair.second);
-    }
-
-    const nts::Parser::IComponentContainer inputs = _parser.getInputs();
-    for (const auto &pair : inputs) {
-        circuit.addInput(pair.first, pair.second);
-    }
-
-    const nts::Parser::IComponentContainer outputs = _parser.getOutputs();
-    for (const auto &pair : outputs) {
-        circuit.addOutput(pair.first, pair.second);
-    }
+    _parser.getContainer().addToCircuit(circuit);
     _circuits.push_back(circuit);
 }
 

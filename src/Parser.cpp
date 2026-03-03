@@ -7,6 +7,8 @@
 #include <optional>
 #include <sstream>
 #include <string>
+#include <utility>
+#include <array>
 
 nts::Parser::Parser(): _factory(), _fileName(), _fileStream(), _line(), _lineIsStatement(false)
 {
@@ -36,19 +38,67 @@ bool nts::Parser::open()
     }
 }
 
-nts::Parser::IComponentContainer nts::Parser::getChipsets() const
+nts::Parser::IComponentContainer::IComponentContainer()
 {
-    return _chipsets;
 }
 
-nts::Parser::IComponentContainer nts::Parser::getInputs() const
+nts::Parser::IComponentContainer::~IComponentContainer()
 {
-    return _inputs;
 }
 
-nts::Parser::IComponentContainer nts::Parser::getOutputs() const
+void nts::Parser::IComponentContainer::addToCircuit(nts::Circuit &circuit)
 {
-    return _outputs;
+    for (const auto &pair : _rest) {
+        circuit.addComponent(pair.first, pair.second);
+    }
+    for (const auto &pair : _inputs) {
+        circuit.addInput(pair.first, pair.second);
+    }
+    for (const auto &pair : _outputs) {
+        circuit.addOutput(pair.first, pair.second);
+    }
+}
+
+bool nts::Parser::IComponentContainer::empty() const
+{
+    return _inputs.empty() && _outputs.empty() && _rest.empty();
+}
+
+void nts::Parser::IComponentContainer::addInput(std::pair<std::string, std::shared_ptr<IComponent>> &pair)
+{
+    _inputs.push_back(pair);
+}
+
+void nts::Parser::IComponentContainer::addOutput(std::pair<std::string, std::shared_ptr<IComponent>> &pair)
+{
+    _outputs.push_back(pair);
+}
+
+void nts::Parser::IComponentContainer::addRest(std::pair<std::string, std::shared_ptr<IComponent>> &pair)
+{
+    _rest.push_back(pair);
+}
+
+std::optional<std::shared_ptr<nts::IComponent>> nts::Parser::IComponentContainer::find(const std::string &name)
+{
+    const std::array<std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>>, 3> _containers({
+        _rest,
+        _inputs,
+        _outputs
+    });
+
+    for (const auto &container : _containers) {
+        for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : container) {
+            if (pair.first == name)
+                return pair.second;
+        }
+    }
+    return std::nullopt;
+}
+
+nts::Parser::IComponentContainer nts::Parser::getContainer() const
+{
+    return _container;
 }
 
 // Trim left then trim right
@@ -99,29 +149,9 @@ void nts::Parser::parse()
         }
     }
 
-    if (_chipsets.empty() && _inputs.empty() && _outputs.empty()) {
+    if (_container.empty()) {
         throw nts::Exception("Chipsets cannot be empty");
     }
-}
-
-std::optional<std::shared_ptr<nts::IComponent>> nts::Parser::findComponentByName(const std::string &name)
-{
-    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _chipsets) {
-        if (pair.first == name) {
-            return pair.second;
-        }
-    }
-    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _inputs) {
-        if (pair.first == name) {
-            return pair.second;
-        }
-    }
-    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _outputs) {
-        if (pair.first == name) {
-            return pair.second;
-        }
-    }
-    return std::nullopt;
 }
 
 void nts::Parser::parseChipsetLine(const std::string &line)
@@ -144,20 +174,18 @@ void nts::Parser::parseChipsetLine(const std::string &line)
         throw nts::Exception("Too many arguments when parsing chipset");
     }
 
-    if (findComponentByName(name).has_value()) {
+    if (_container.find(name).has_value()) {
         throw nts::Exception("Component " + name + " already exists");
     }
 
     std::pair<std::string, std::shared_ptr<nts::IComponent>> pair = std::make_pair(name, _factory.createComponent(type));
 
     if (type == "input" || type == "clock") {
-        _inputs.push_back(pair);
-    }
-    else if (type == "output") {
-        _outputs.push_back(pair);
-    }
-    else {
-        _chipsets.push_back(pair);
+        _container.addInput(pair);
+    } else if (type == "output") {
+        _container.addOutput(pair);
+    } else {
+        _container.addRest(pair);
     }
 }
 
@@ -180,7 +208,7 @@ std::pair<std::size_t, std::shared_ptr<nts::IComponent>> nts::Parser::parseLinkP
         throw nts::Exception("Error when parsing link");
     }
 
-    std::optional<std::shared_ptr<nts::IComponent>> ptr = findComponentByName(name);
+    std::optional<std::shared_ptr<nts::IComponent>> ptr = _container.find(name);
 
     if (ptr.has_value()) {
         return {pin, *ptr};
