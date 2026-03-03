@@ -1,0 +1,55 @@
+> tick: 0
+input(s):
+  in_01: U
+  in_02: U
+  in_06: U
+  in_09: U
+  in_13: U
+output(s):
+  out: U
+> > tick: 1
+input(s):
+  in_01: U
+  in_02: U
+  in_06: U
+  in_09: U
+  in_13: U
+output(s):
+  out: U
+> > > > > > > > tick: 2
+input(s):
+  in_01: 1
+  in_02: 1
+  in_06: 1
+  in_09: 1
+  in_13: 1
+output(s):
+  out: 1
+> > > > tick: 3
+input(s):
+  in_01: 1
+  in_02: 0
+  in_06: 1
+  in_09: 1
+  in_13: 1
+output(s):
+  out: 0
+> > > > tick: 4
+input(s):
+  in_01: 1
+  in_02: 0
+  in_06: 1
+  in_09: 0
+  in_13: 1
+output(s):
+  out: 1
+> > > > > > > > tick: 5
+input(s):
+  in_01: U
+  in_02: U
+  in_06: U
+  in_09: U
+  in_13: U
+output(s):
+  out: U
+> 

@@ -1,0 +1,29 @@
+# A 4030 (all linked to itself for a single output) linked to a 4069 (same as 4030 outputs)
+
+.chipsets:
+input in_01
+input in_02
+input in_06
+input in_09
+input in_13
+output out
+4030 gate
+4069 not_gate
+
+.links:
+in_01:1 gate:1
+in_02:1 gate:2
+gate:3 gate:5
+in_06:1 gate:6
+gate:4 gate:8
+in_09:1 gate:9
+gate:10 gate:12
+in_13:1 gate:13
+gate:11 not_gate:1
+not_gate:2 not_gate:3
+not_gate:4 not_gate:5
+not_gate:6 not_gate:9
+not_gate:8 not_gate:11
+not_gate:10 not_gate:13
+not_gate:12 out:1
+
