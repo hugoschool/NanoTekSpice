@@ -33,12 +33,21 @@ void nts::Circuit::add(std::string name, std::shared_ptr<IComponent> component)
 
 std::shared_ptr<nts::IComponent> nts::Circuit::find(const std::string &name)
 {
-    std::unordered_map<std::string, std::shared_ptr<nts::IComponent>>::iterator value = _components.find(name);
+    auto value = _components.find(name);
 
     if (value == _components.end()) {
         throw nts::Exception("Component not found");
     }
+    return value->second;
+}
 
+std::shared_ptr<nts::IComponent> nts::Circuit::findInput(const std::string &name)
+{
+    auto value = _inputs.find(name);
+
+    if (value == _inputs.end()) {
+        throw nts::Exception("Couldn't find input");
+    }
     return value->second;
 }
 

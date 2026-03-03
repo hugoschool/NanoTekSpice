@@ -8,7 +8,7 @@ namespace nts {
             ClockComponent();
             ~ClockComponent();
 
-            void store(nts::Tristate);
+            void setInternalState(nts::Tristate) override;
             void simulate(std::size_t tick) override;
             nts::Tristate compute(std::size_t pin) override;
 

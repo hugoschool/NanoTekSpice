@@ -21,6 +21,7 @@ namespace nts {
             void display(std::size_t &tick);
             void add(std::string, std::shared_ptr<IComponent>);
             std::shared_ptr<IComponent> find(const std::string &);
+            std::shared_ptr<IComponent> findInput(const std::string &);
 
             void setInternalState(nts::Tristate) override;
         private:
