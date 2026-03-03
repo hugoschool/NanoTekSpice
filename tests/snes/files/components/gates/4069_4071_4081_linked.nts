@@ -1,0 +1,45 @@
+# Linked in the order: 4081 (AND), 4071 (OR), 4069 (NOT)
+
+.chipsets:
+input iand_01
+input iand_02
+input iand_03
+input iand_04
+input iand_05
+input ior_01
+input ior_02
+input ior_03
+input ior_04
+output out
+4069 not_gate
+4071 or_gate
+4081 and_gate
+
+.links:
+iand_01:1 and_gate:1
+iand_02:1 and_gate:2
+iand_03:1 and_gate:6
+iand_04:1 and_gate:9
+iand_05:1 and_gate:13
+and_gate:3 and_gate:5
+and_gate:4 and_gate:8
+and_gate:10 and_gate:12
+
+or_gate:1 and_gate:11
+ior_01:1 or_gate:2
+ior_02:1 or_gate:6
+ior_03:1 or_gate:9
+ior_04:1 or_gate:13
+or_gate:3 or_gate:5
+or_gate:4 or_gate:8
+or_gate:10 or_gate:12
+
+or_gate:11 not_gate:1
+not_gate:2 not_gate:3
+not_gate:4 not_gate:5
+not_gate:6 not_gate:9
+not_gate:8 not_gate:11
+not_gate:10 not_gate:13
+not_gate:12 out:1
+
+#or_gate:11 out:1

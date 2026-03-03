@@ -1,0 +1,79 @@
+> tick: 0
+input(s):
+  iand_01: U
+  iand_02: U
+  iand_03: U
+  iand_04: U
+  iand_05: U
+  ior_01: U
+  ior_02: U
+  ior_03: U
+  ior_04: U
+output(s):
+  out: U
+> > tick: 1
+input(s):
+  iand_01: U
+  iand_02: U
+  iand_03: U
+  iand_04: U
+  iand_05: U
+  ior_01: U
+  ior_02: U
+  ior_03: U
+  ior_04: U
+output(s):
+  out: U
+> > > > > > > > > > > > tick: 2
+input(s):
+  iand_01: 0
+  iand_02: 0
+  iand_03: 0
+  iand_04: 0
+  iand_05: 0
+  ior_01: 1
+  ior_02: 1
+  ior_03: 1
+  ior_04: 1
+output(s):
+  out: 1
+> > > > > > > > > > > > tick: 3
+input(s):
+  iand_01: 0
+  iand_02: 0
+  iand_03: 0
+  iand_04: 0
+  iand_05: 0
+  ior_01: 0
+  ior_02: 0
+  ior_03: 0
+  ior_04: 0
+output(s):
+  out: 0
+> > > > > > > > > > > > tick: 4
+input(s):
+  iand_01: 1
+  iand_02: 0
+  iand_03: 1
+  iand_04: 0
+  iand_05: 1
+  ior_01: 0
+  ior_02: 1
+  ior_03: 0
+  ior_04: 1
+output(s):
+  out: 1
+> > > > > > > > > > > > tick: 5
+input(s):
+  iand_01: 1
+  iand_02: 1
+  iand_03: 1
+  iand_04: 1
+  iand_05: 1
+  ior_01: 0
+  ior_02: 0
+  ior_03: 0
+  ior_04: 0
+output(s):
+  out: U
+> 
