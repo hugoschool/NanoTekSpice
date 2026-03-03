@@ -68,7 +68,7 @@ void nts::Shell::commandInputValue(std::string &line)
 
         // TODO: simplify this too
         if (dynamic_cast<nts::InputComponent *>(ptr.get())) {
-            dynamic_cast<nts::InputComponent *>(ptr.get())->store(tristate.value());
+            ptr->setInternalState(tristate.value());
         } else if (dynamic_cast<nts::ClockComponent *>(ptr.get())) {
             dynamic_cast<nts::ClockComponent *>(ptr.get())->store(tristate.value());
         } else {
