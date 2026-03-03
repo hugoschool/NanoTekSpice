@@ -21,7 +21,18 @@
 // Pin 11   = Output 9
 // Pin 12   = q rev
 
-nts::Component4017::Component4017() : AComponent(), _currentIndex(-1)
+nts::Component4017::Component4017() : AComponent(), _currentIndex(-1), _outputArray({
+    {3, 0},
+    {2, 1},
+    {4, 2},
+    {7, 3},
+    {10, 4},
+    {1, 5},
+    {5, 6},
+    {6, 7},
+    {9, 8},
+    {11, 9},
+})
 {
     _previousClock = getLink(14);
     _previousInverseClock = getLink(13);
@@ -54,10 +65,8 @@ void nts::Component4017::simulate(std::size_t tick)
     if ((_previousClock == nts::Undefined && clock != nts::Undefined)
         || (_previousInverseClock == nts::Undefined && inverseClock != nts::Undefined))
         _currentIndex = 0;
-    if ((_previousClock == nts::False && clock == nts::True)) {
-        increaseIndex();
-    }
-    if ((_previousInverseClock == nts::True && inverseClock == nts::False)) {
+    if ((_previousClock == nts::False && clock == nts::True && inverseClock == nts::False)
+        || (_previousInverseClock == nts::True && inverseClock == nts::False && clock == nts::True)) {
         increaseIndex();
     }
 
@@ -68,26 +77,13 @@ void nts::Component4017::simulate(std::size_t tick)
 
 nts::Tristate nts::Component4017::compute(std::size_t pin)
 {
-    std::array<std::pair<std::size_t, int>, 10> _array({
-        {3, 0},
-        {2, 1},
-        {4, 2},
-        {7, 3},
-        {10, 4},
-        {1, 5},
-        {5, 6},
-        {6, 7},
-        {9, 8},
-        {11, 9},
-    });
-
-    for (std::size_t i = 0; i < _array.size(); i++) {
-        if (pin != _array[i].first)
+    for (std::size_t i = 0; i < _outputArray.size(); i++) {
+        if (pin != _outputArray[i].first)
             continue;
         if (_currentIndex == -1) {
             _state = nts::Undefined;
             return _state;
-        } else if (_currentIndex == _array[i].second)
+        } else if (_currentIndex == _outputArray[i].second)
             _state = nts::True;
         else
             _state = nts::False;

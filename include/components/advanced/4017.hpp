@@ -2,6 +2,7 @@
 
 #include "Tristate.hpp"
 #include "components/AComponent.hpp"
+#include <array>
 
 namespace nts {
     class Component4017 : public nts::AComponent {
@@ -18,5 +19,6 @@ namespace nts {
             int _currentIndex;
             nts::Tristate _previousClock;
             nts::Tristate _previousInverseClock;
+            std::array<std::pair<std::size_t, int>, 10> _outputArray;
     };
 }
