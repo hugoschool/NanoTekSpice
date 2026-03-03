@@ -15,8 +15,13 @@ namespace nts {
             nts::Tristate getLink(std::size_t pin);
             void setState(Tristate state) override;
             Tristate getState() const override;
+
         protected:
             std::unordered_map<std::size_t, std::pair<IComponent &, std::size_t>> _pins;
             Tristate _state;
+            std::unordered_map<std::size_t, std::size_t> _computedAmount;
+
+        private:
+            const std::size_t _maxComputedLoopAmount;
     };
 }

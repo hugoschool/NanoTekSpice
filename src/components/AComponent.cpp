@@ -5,7 +5,8 @@
 #include <stdexcept>
 #include <utility>
 
-nts::AComponent::AComponent() : IComponent(), _state(nts::Undefined)
+nts::AComponent::AComponent() : IComponent(), _state(nts::Undefined), _computedAmount(),
+    _maxComputedLoopAmount(100)
 {
 }
 
@@ -18,6 +19,7 @@ void nts::AComponent::simulate(std::size_t)
     for (auto pin : _pins) {
         pin.second.first.setState(pin.second.first.compute(pin.second.second));
     }
+    _computedAmount.clear();
 }
 
 void nts::AComponent::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
@@ -30,6 +32,17 @@ void nts::AComponent::setLink(std::size_t pin, nts::IComponent &other, std::size
 nts::Tristate nts::AComponent::getLink(std::size_t pin)
 {
     try {
+        try {
+            std::size_t amount = _computedAmount.at(pin);
+            if (amount >= _maxComputedLoopAmount) {
+                return nts::Undefined;
+            } else {
+                _computedAmount.insert_or_assign(pin, amount + 1);
+            }
+        } catch (const std::out_of_range &) {
+            _computedAmount.insert_or_assign(pin, 1);
+        }
+
         std::pair<nts::IComponent &, std::size_t> pair = _pins.at(pin);
         nts::IComponent &component = pair.first;
 
