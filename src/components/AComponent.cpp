@@ -61,3 +61,7 @@ nts::Tristate nts::AComponent::getState() const
 {
     return _state;
 }
+
+void nts::AComponent::setInternalState(nts::Tristate)
+{
+}

@@ -8,9 +8,10 @@ namespace nts {
             InputComponent();
             ~InputComponent();
 
-            void store(nts::Tristate);
+            void setInternalState(nts::Tristate) override;
+            void simulate(std::size_t tick) override;
             nts::Tristate compute(std::size_t pin) override;
         private:
-            nts::Tristate _state;
+            nts::Tristate _internalState;
     };
 }

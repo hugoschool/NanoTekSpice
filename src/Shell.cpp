@@ -1,9 +1,7 @@
 #include "Shell.hpp"
 #include "Exception.hpp"
 #include "Tristate.hpp"
-#include "components/ClockComponent.hpp"
 #include "components/IComponent.hpp"
-#include "components/InputComponent.hpp"
 #include <cstddef>
 #include <iostream>
 #include <optional>
@@ -64,22 +62,14 @@ void nts::Shell::commandInputValue(std::string &line)
     }
 
     try {
-        std::shared_ptr<nts::IComponent> ptr = _circuits[_circuitIndex].find(input);
+        std::shared_ptr<nts::IComponent> ptr = _circuits[_circuitIndex].findInput(input);
 
-        // TODO: simplify this too
-        if (dynamic_cast<nts::InputComponent *>(ptr.get())) {
-            dynamic_cast<nts::InputComponent *>(ptr.get())->store(tristate.value());
-        } else if (dynamic_cast<nts::ClockComponent *>(ptr.get())) {
-            dynamic_cast<nts::ClockComponent *>(ptr.get())->store(tristate.value());
-        } else {
-            std::cerr << "Component is not an input or a clock" << std::endl;
-        }
+        ptr->setInternalState(tristate.value());
     } catch (const nts::Exception &err) {
         std::cerr << err.what() << std::endl;
     }
 }
 
-// TODO: there's probably something to simplify here
 void nts::Shell::loop()
 {
     std::string line;

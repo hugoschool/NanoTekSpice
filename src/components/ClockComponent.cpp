@@ -10,7 +10,7 @@ nts::ClockComponent::~ClockComponent()
 {
 }
 
-void nts::ClockComponent::store(nts::Tristate state)
+void nts::ClockComponent::setInternalState(nts::Tristate state)
 {
     _interiorState = state;
 }
@@ -19,9 +19,7 @@ void nts::ClockComponent::simulate(std::size_t tick)
 {
     for (; _tick < tick; _tick++) {
         _state = _interiorState;
-        for (auto pin : _pins) {
-            pin.second.first.setState(pin.second.first.compute(pin.second.second));
-        }
+        AComponent::simulate(tick);
         if (_interiorState != Undefined)
             _interiorState = static_cast<nts::Tristate>(!static_cast<bool>(_state));
     }
