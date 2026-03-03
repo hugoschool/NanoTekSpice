@@ -164,6 +164,11 @@ class SNES:
                 "components/gates/common.input",
                 "components/gates/4081_and.output"
             ),
+            ContentTest(
+                "components/gates/4081_and_advanced.nts",
+                "components/gates/4081_and_advanced.input",
+                "components/gates/4081_and_advanced.output"
+            ),
 
             # Advanced tests
 
