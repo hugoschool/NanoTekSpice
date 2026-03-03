@@ -117,7 +117,11 @@ nts::Tristate nts::Component4094::compute(std::size_t pin)
         // QS1
         case 9:
             if (_previousClock == False && clock == True) {
-                _state = storePin(pin, getLink(12));
+                // Store the Q7 info into Q8 and QS1
+                nts::Tristate q7State = getStoredPin(12);
+                storePin(11, q7State);
+                storePin(pin, q7State);
+                _state = q7State;
                 break;
             } else if (_previousClock == True && clock == False) {
                 _state = getStoredPin(pin);
