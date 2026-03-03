@@ -200,7 +200,7 @@ output(s):
   out_5: 0
   out_6: 0
   out_7: 0
-  out_qe: U
+  out_qe: 0
   out_qs: 0
 > > tick: 15
 input(s):
@@ -219,4 +219,4 @@ output(s):
   out_7: 0
   out_qe: U
   out_qs: 0
-> 
+>
