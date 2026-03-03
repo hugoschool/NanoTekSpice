@@ -19,7 +19,9 @@ namespace nts {
             void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) override;
             void simulate(std::size_t tick) override final;
             void display(std::size_t &tick);
-            void add(std::string, std::shared_ptr<IComponent>);
+            void addComponent(std::string, std::shared_ptr<IComponent>);
+            void addInput(std::string, std::shared_ptr<IComponent>);
+            void addOutput(std::string, std::shared_ptr<IComponent>);
             std::shared_ptr<IComponent> find(const std::string &);
             std::shared_ptr<IComponent> findInput(const std::string &);
 

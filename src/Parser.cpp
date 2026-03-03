@@ -36,9 +36,19 @@ bool nts::Parser::open()
     }
 }
 
-std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> nts::Parser::getChipsets() const
+nts::Parser::IComponentContainer nts::Parser::getChipsets() const
 {
     return _chipsets;
+}
+
+nts::Parser::IComponentContainer nts::Parser::getInputs() const
+{
+    return _inputs;
+}
+
+nts::Parser::IComponentContainer nts::Parser::getOutputs() const
+{
+    return _outputs;
 }
 
 // Trim left then trim right
@@ -89,7 +99,7 @@ void nts::Parser::parse()
         }
     }
 
-    if (_chipsets.empty()) {
+    if (_chipsets.empty() && _inputs.empty() && _outputs.empty()) {
         throw nts::Exception("Chipsets cannot be empty");
     }
 }
@@ -97,6 +107,16 @@ void nts::Parser::parse()
 std::optional<std::shared_ptr<nts::IComponent>> nts::Parser::findComponentByName(const std::string &name)
 {
     for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _chipsets) {
+        if (pair.first == name) {
+            return pair.second;
+        }
+    }
+    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _inputs) {
+        if (pair.first == name) {
+            return pair.second;
+        }
+    }
+    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : _outputs) {
         if (pair.first == name) {
             return pair.second;
         }
@@ -128,7 +148,17 @@ void nts::Parser::parseChipsetLine(const std::string &line)
         throw nts::Exception("Component " + name + " already exists");
     }
 
-    _chipsets.push_back({name, _factory.createComponent(type)});
+    std::pair<std::string, std::shared_ptr<nts::IComponent>> pair = std::make_pair(name, _factory.createComponent(type));
+
+    if (type == "input" || type == "clock") {
+        _inputs.push_back(pair);
+    }
+    else if (type == "output") {
+        _outputs.push_back(pair);
+    }
+    else {
+        _chipsets.push_back(pair);
+    }
 }
 
 std::pair<std::size_t, std::shared_ptr<nts::IComponent>> nts::Parser::parseLinkPart(std::string &str)

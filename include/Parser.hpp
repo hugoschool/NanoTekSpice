@@ -17,13 +17,17 @@
 namespace nts {
     class Parser {
         public:
+            using IComponentContainer = std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>>;
+
             Parser();
             ~Parser();
 
             void setFileName(const std::string);
 
             void parse();
-            std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> getChipsets() const;
+            IComponentContainer getChipsets() const;
+            IComponentContainer getInputs() const;
+            IComponentContainer getOutputs() const;
 
         private:
             nts::Factory _factory;
@@ -31,7 +35,9 @@ namespace nts {
             std::string _fileName;
             std::ifstream _fileStream;
 
-            std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> _chipsets;
+            IComponentContainer _chipsets;
+            IComponentContainer _inputs;
+            IComponentContainer _outputs;
 
             std::string _line;
             bool _lineIsStatement;

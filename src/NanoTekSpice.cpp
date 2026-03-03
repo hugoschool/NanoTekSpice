@@ -1,6 +1,7 @@
 #include "NanoTekSpice.hpp"
 #include "Circuit.hpp"
 #include "Exception.hpp"
+#include "Parser.hpp"
 
 nts::NanoTekSpice::NanoTekSpice() : _parser(), _tick(0), _circuits(), _shell(_circuits, _tick)
 {
@@ -15,11 +16,21 @@ void nts::NanoTekSpice::addCircuit(const std::string fileName)
     _parser.setFileName(fileName);
     _parser.parse();
 
-    const std::vector<std::pair<std::string, std::shared_ptr<nts::IComponent>>> chipsets = _parser.getChipsets();
     nts::Circuit circuit;
 
-    for (const std::pair<std::string, std::shared_ptr<nts::IComponent>> &pair : chipsets) {
-        circuit.add(pair.first, pair.second);
+    const nts::Parser::IComponentContainer chipsets = _parser.getChipsets();
+    for (const auto &pair : chipsets) {
+        circuit.addComponent(pair.first, pair.second);
+    }
+
+    const nts::Parser::IComponentContainer inputs = _parser.getInputs();
+    for (const auto &pair : inputs) {
+        circuit.addInput(pair.first, pair.second);
+    }
+
+    const nts::Parser::IComponentContainer outputs = _parser.getOutputs();
+    for (const auto &pair : outputs) {
+        circuit.addOutput(pair.first, pair.second);
     }
     _circuits.push_back(circuit);
 }
