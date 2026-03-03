@@ -31,6 +31,7 @@ void nts::LoggerComponent::simulate(std::size_t tick)
 {
     AComponent::simulate(tick);
     _previousClock = getLink(9);
+    _pins.resetComputeState();
 }
 
 nts::Tristate nts::LoggerComponent::compute(std::size_t)

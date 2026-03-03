@@ -8,11 +8,16 @@
 namespace nts {
     class Pins {
         public:
+            enum ComputatedState {
+                NOT_COMPUTED,
+                COMPUTED
+            };
+
             // First element is the other component it is linked to
             // Second is the other pin it is linked to
             // Third is the state of that other component
             // Fourth is whether it has been computed in that last simulation or not.
-            using pinContent = std::tuple<nts::IComponent &, std::size_t, nts::Tristate, bool>;
+            using pinContent = std::tuple<nts::IComponent &, std::size_t, nts::Tristate, ComputatedState>;
 
             Pins();
             ~Pins();

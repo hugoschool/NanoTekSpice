@@ -47,6 +47,7 @@ nts::Component4040::~Component4040()
 
 void nts::Component4040::simulate(std::size_t tick)
 {
+    _pins.resetComputeState();
     nts::Tristate clock = getLink(10);
     nts::Tristate reset = getLink(11);
 

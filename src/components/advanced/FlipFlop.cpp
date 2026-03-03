@@ -32,8 +32,11 @@ nts::FlipFlop::~FlipFlop()
 
 void nts::FlipFlop::simulate(std::size_t tick)
 {
+    nts::Tristate clock = getLink(4);
+    _pins.resetComputeState();
+
     AComponent::simulate(tick);
-    _previousClock = getLink(4);
+    _previousClock = clock;
 }
 
 nts::Tristate nts::FlipFlop::getReverseState()
