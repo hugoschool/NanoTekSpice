@@ -49,3 +49,15 @@ ior_03=0
 ior_04=0
 simulate
 display
+
+iand_01=0
+iand_02=0
+iand_03=0
+iand_04=0
+iand_05=0
+ior_01=1
+ior_02=1
+ior_03=1
+ior_04=1
+simulate
+display
