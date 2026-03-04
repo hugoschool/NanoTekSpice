@@ -7,22 +7,22 @@ input(s):
   inhibit: U
   strobe: U
 output(s):
-  out_00: 1
-  out_01: 0
-  out_02: 0
-  out_03: 0
-  out_04: 0
-  out_05: 0
-  out_06: 0
-  out_07: 0
-  out_08: 0
-  out_09: 0
-  out_10: 0
-  out_11: 0
-  out_12: 0
-  out_13: 0
-  out_14: 0
-  out_15: 0
+  out_00: U
+  out_01: U
+  out_02: U
+  out_03: U
+  out_04: U
+  out_05: U
+  out_06: U
+  out_07: U
+  out_08: U
+  out_09: U
+  out_10: U
+  out_11: U
+  out_12: U
+  out_13: U
+  out_14: U
+  out_15: U
 > > tick: 1
 input(s):
   in_0: U
@@ -32,22 +32,22 @@ input(s):
   inhibit: U
   strobe: U
 output(s):
-  out_00: 1
-  out_01: 0
-  out_02: 0
-  out_03: 0
-  out_04: 0
-  out_05: 0
-  out_06: 0
-  out_07: 0
-  out_08: 0
-  out_09: 0
-  out_10: 0
-  out_11: 0
-  out_12: 0
-  out_13: 0
-  out_14: 0
-  out_15: 0
+  out_00: U
+  out_01: U
+  out_02: U
+  out_03: U
+  out_04: U
+  out_05: U
+  out_06: U
+  out_07: U
+  out_08: U
+  out_09: U
+  out_10: U
+  out_11: U
+  out_12: U
+  out_13: U
+  out_14: U
+  out_15: U
 > > > > > tick: 2
 input(s):
   in_0: U

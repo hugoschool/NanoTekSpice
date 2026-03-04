@@ -15,6 +15,6 @@ namespace nts {
         private:
             std::array<std::pair<std::size_t, uint8_t>, 16> _outputPins;
 
-            uint8_t defineBinaryVal();
+            std::optional<uint8_t> defineBinaryVal(std::array<std::pair<nts::Tristate, std::uint8_t>, 4> &vals);
     };
 }

@@ -6,7 +6,7 @@
 #include <utility>
 
 nts::AComponent::AComponent() : IComponent(), _state(nts::Undefined), _computedAmount(),
-    _maxComputedLoopAmount(300)
+    _maxComputedLoopAmount(500)
 {
 }
 
