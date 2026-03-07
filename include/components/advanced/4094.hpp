@@ -2,6 +2,7 @@
 
 #include "Tristate.hpp"
 #include "components/AComponent.hpp"
+#include "utils/ShiftContainer.hpp"
 #include <array>
 #include <unordered_map>
 
@@ -16,15 +17,11 @@ namespace nts {
 
         private:
             nts::Tristate _previousClock;
+            const std::unordered_map<std::size_t, std::size_t> _pinOutputMap;
+            nts::ShiftContainer<8> _shiftContainer;
+            bool _hasShifted;
+            std::array<nts::Tristate, 2> _serialOutputs;
 
-            std::size_t getPreviousPin(std::size_t pin);
-
-            // 1st arg is pin, 2nd is output
-            std::array<std::pair<std::size_t, std::size_t>, 8> _pinOutputArray;
-
-            std::unordered_map<std::size_t, nts::Tristate> _storedMap;
-            nts::Tristate storePin(std::size_t pin, nts::Tristate state);
-            nts::Tristate getStoredPin(std::size_t pin);
-
+            void setStateFromShiftContainer(std::size_t pin);
     };
 }
